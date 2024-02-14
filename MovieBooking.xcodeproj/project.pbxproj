@@ -19,6 +19,9 @@
 		A4CBF4BC2B7CFD33001C64D2 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CBF4BB2B7CFD33001C64D2 /* Utils.swift */; };
 		A4CBF4BE2B7CFD42001C64D2 /* ExampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CBF4BD2B7CFD42001C64D2 /* ExampleData.swift */; };
 		A4CBF4C02B7CFE54001C64D2 /* PosterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CBF4BF2B7CFE54001C64D2 /* PosterView.swift */; };
+		A4CBF4C22B7CFFA0001C64D2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CBF4C12B7CFFA0001C64D2 /* Constants.swift */; };
+		A4CBF4C52B7D00FA001C64D2 /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CBF4C42B7D00FA001C64D2 /* UIScreen.swift */; };
+		A4CBF4C72B7D0984001C64D2 /* MoviesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CBF4C62B7D0984001C64D2 /* MoviesListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +38,9 @@
 		A4CBF4BB2B7CFD33001C64D2 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		A4CBF4BD2B7CFD42001C64D2 /* ExampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleData.swift; sourceTree = "<group>"; };
 		A4CBF4BF2B7CFE54001C64D2 /* PosterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterView.swift; sourceTree = "<group>"; };
+		A4CBF4C12B7CFFA0001C64D2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A4CBF4C42B7D00FA001C64D2 /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
+		A4CBF4C62B7D0984001C64D2 /* MoviesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +75,7 @@
 			children = (
 				A4535DDC2B761BE3003C657C /* MovieBookingApp.swift */,
 				A4535DDE2B761BE3003C657C /* ContentView.swift */,
+				A4CBF4C32B7D00E3001C64D2 /* Extensions */,
 				A4CBF4B32B7CFBAD001C64D2 /* Helper */,
 				A4CBF4B22B7CFB9E001C64D2 /* API */,
 				A46BD2572B7CFA1700B2D172 /* Views */,
@@ -110,6 +117,7 @@
 			children = (
 				A4CBF4B92B7CFD27001C64D2 /* HomeView.swift */,
 				A4CBF4BF2B7CFE54001C64D2 /* PosterView.swift */,
+				A4CBF4C62B7D0984001C64D2 /* MoviesListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -126,9 +134,18 @@
 			isa = PBXGroup;
 			children = (
 				A4CBF4BB2B7CFD33001C64D2 /* Utils.swift */,
+				A4CBF4C12B7CFFA0001C64D2 /* Constants.swift */,
 				A4CBF4BD2B7CFD42001C64D2 /* ExampleData.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		A4CBF4C32B7D00E3001C64D2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A4CBF4C42B7D00FA001C64D2 /* UIScreen.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,11 +219,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4535DDF2B761BE3003C657C /* ContentView.swift in Sources */,
+				A4CBF4C22B7CFFA0001C64D2 /* Constants.swift in Sources */,
 				A4CBF4BA2B7CFD27001C64D2 /* HomeView.swift in Sources */,
+				A4CBF4C72B7D0984001C64D2 /* MoviesListView.swift in Sources */,
 				A4CBF4B62B7CFBC1001C64D2 /* APIService.swift in Sources */,
 				A4535DDD2B761BE3003C657C /* MovieBookingApp.swift in Sources */,
 				A4CBF4B82B7CFC60001C64D2 /* MoviesListViewModel.swift in Sources */,
 				A4CBF4C02B7CFE54001C64D2 /* PosterView.swift in Sources */,
+				A4CBF4C52B7D00FA001C64D2 /* UIScreen.swift in Sources */,
 				A46BD2542B7CF99D00B2D172 /* Movie.swift in Sources */,
 				A46BD2592B7CFA8C00B2D172 /* MovieDetail.swift in Sources */,
 				A4CBF4BC2B7CFD33001C64D2 /* Utils.swift in Sources */,
@@ -267,7 +287,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -321,7 +341,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -339,6 +359,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MovieBooking/Preview Content\"";
+				DEVELOPMENT_TEAM = W7C6394PMD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -346,6 +367,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -367,6 +389,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MovieBooking/Preview Content\"";
+				DEVELOPMENT_TEAM = W7C6394PMD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -374,6 +397,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

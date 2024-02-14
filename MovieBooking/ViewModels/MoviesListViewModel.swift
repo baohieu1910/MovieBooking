@@ -19,6 +19,10 @@ class MoviesListViewModel: ObservableObject {
         }
     }
     
-    
+    func getUpcomingMovies() {
+        apiService.getUpcomingMovie(page: 1) { [weak self] movies in
+            self?.upcomingMovies = movies
+        }
+    }
     
 }
