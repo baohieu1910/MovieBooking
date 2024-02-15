@@ -9,6 +9,9 @@ import SwiftUI
 
 struct MovieDetailView: View {
     @ObservedObject var viewModel: MovieDetailViewModel
+    
+    @ObservedObject var imagesVM = ImageListsViewModel()
+    @ObservedObject var castVM = CastListViewModel()
     var movie: Movie
     
     @State var isShowMore = false
@@ -20,7 +23,7 @@ struct MovieDetailView: View {
     @State var status: Status = .information
     
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             VStack {
                 let url = URL(string: Utils.getMoviePoster(posterPath: viewModel.movie?.posterPath))
                 AsyncImage(url: url) { image in
@@ -48,7 +51,7 @@ struct MovieDetailView: View {
                     Button {
                         status = .information
                     } label: {
-                        Text("Information")
+                        Text("Overview")
                             .foregroundColor(status == .information ? .blue : .gray)
                             .font(.system(size: 15))
                     }
@@ -75,7 +78,7 @@ struct MovieDetailView: View {
                         VStack(alignment: .leading) {
                             VStack(alignment: .leading) {
                                 Text("Information")
-                                    .font(.system(size: 15, weight: .bold))
+                                    .font(.system(size: 18, weight: .bold))
                                     .padding(.vertical, 10)
                                 
                                 Text("\(viewModel.movie?.overview ?? "N/A")")
@@ -94,15 +97,23 @@ struct MovieDetailView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                             
                             Divider()
-                            VStack {
+                            VStack(alignment: .leading) {
                                 Text("Cast")
+                                    .font(.system(size: 18, weight: .bold))
+                                
+                                CastListView(viewModel: castVM)
                             }
+                            .frame(maxWidth: .infinity, alignment: .leading)
                             
                             Divider()
                             
-                            VStack {
+                            VStack(alignment: .leading) {
                                 Text("Media")
+                                    .font(.system(size: 18, weight: .bold))
+                                
+                                ImageListView(viewModel: imagesVM)
                             }
+                            .frame(maxWidth: .infinity, alignment: .leading)
                             
                         }
                     case .news:
@@ -119,8 +130,11 @@ struct MovieDetailView: View {
                 }
             }
         }
+        .padding(.horizontal)
         .onAppear {
             viewModel.getMovieDetail(id: movie.id)
+            imagesVM.getImagesList(id: movie.id)
+            castVM.getCastList(id: movie.id)
         }
     }
     
