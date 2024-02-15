@@ -41,6 +41,7 @@ struct PosterView: View {
                 }
                 
                 Text("\(movie.title ?? "N/A")")
+                    .lineLimit(1)
             }
             
         } placeholder: {

@@ -22,6 +22,7 @@
 		A4CBF4C22B7CFFA0001C64D2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CBF4C12B7CFFA0001C64D2 /* Constants.swift */; };
 		A4CBF4C52B7D00FA001C64D2 /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CBF4C42B7D00FA001C64D2 /* UIScreen.swift */; };
 		A4CBF4C72B7D0984001C64D2 /* MoviesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CBF4C62B7D0984001C64D2 /* MoviesListView.swift */; };
+		A4CBF4C92B7D221C001C64D2 /* AllMovieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CBF4C82B7D221C001C64D2 /* AllMovieView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		A4CBF4C12B7CFFA0001C64D2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A4CBF4C42B7D00FA001C64D2 /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
 		A4CBF4C62B7D0984001C64D2 /* MoviesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListView.swift; sourceTree = "<group>"; };
+		A4CBF4C82B7D221C001C64D2 /* AllMovieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllMovieView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				A4CBF4B92B7CFD27001C64D2 /* HomeView.swift */,
+				A4CBF4C82B7D221C001C64D2 /* AllMovieView.swift */,
 				A4CBF4BF2B7CFE54001C64D2 /* PosterView.swift */,
 				A4CBF4C62B7D0984001C64D2 /* MoviesListView.swift */,
 			);
@@ -219,6 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4535DDF2B761BE3003C657C /* ContentView.swift in Sources */,
+				A4CBF4C92B7D221C001C64D2 /* AllMovieView.swift in Sources */,
 				A4CBF4C22B7CFFA0001C64D2 /* Constants.swift in Sources */,
 				A4CBF4BA2B7CFD27001C64D2 /* HomeView.swift in Sources */,
 				A4CBF4C72B7D0984001C64D2 /* MoviesListView.swift in Sources */,

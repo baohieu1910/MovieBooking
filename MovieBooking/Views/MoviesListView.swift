@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MoviesListView: View {
     let movies: [Movie]
+    let numItem: Int
     
     let columns = [
         GridItem(),
@@ -16,9 +17,9 @@ struct MoviesListView: View {
     ]
     
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             LazyVGrid(columns: columns) {
-                ForEach(movies) { movie in
+                ForEach(movies.prefix(numItem)) { movie in
                     PosterView(movie: movie)
                         .padding(.bottom)
                 }
@@ -29,6 +30,6 @@ struct MoviesListView: View {
 
 struct MoviesListView_Previews: PreviewProvider {
     static var previews: some View {
-        MoviesListView(movies: [])
+        MoviesListView(movies: [], numItem: 6)
     }
 }
