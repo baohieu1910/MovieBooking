@@ -10,12 +10,7 @@ import SwiftUI
 struct AllMovieView: View {
     @ObservedObject var viewModel: MoviesListViewModel
     
-    enum Status {
-        case nowPlaying
-        case upcoming
-    }
-    
-    @State var status: Status = .nowPlaying
+    @Binding var status: HomeStatus
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -57,6 +52,7 @@ struct AllMovieView: View {
 
 struct AllMovieView_Previews: PreviewProvider {
     static var previews: some View {
-        AllMovieView(viewModel: MoviesListViewModel())
+//        AllMovieView(viewModel: MoviesListViewModel(), status: Binding<AllMovieView.Status>)
+        Text("Hello world")
     }
 }

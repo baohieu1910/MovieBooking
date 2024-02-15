@@ -7,19 +7,24 @@
 
 import SwiftUI
 
+enum HomeStatus {
+    case nowPlaying
+    case upcoming
+}
+
 struct HomeView: View {
     @ObservedObject var viewModel: MoviesListViewModel
     
-    enum Status {
-        case nowPlaying
-        case upcoming
-    }
-    
-    @State var status: Status = .nowPlaying
+    @State var status: HomeStatus = .nowPlaying
     
     var body: some View {
         NavigationView {
             ScrollView(showsIndicators: false) {
+                
+//                MovieSliderView(movies: viewModel.nowPlayingMovies)
+//                    .frame(height: 250)
+//                    .cornerRadius(5)
+                
                 VStack {
                     HStack {
                         Button {
@@ -50,7 +55,7 @@ struct HomeView: View {
                     }
                     
                     NavigationLink {
-                        AllMovieView(viewModel: viewModel)
+                        AllMovieView(viewModel: viewModel, status: $status)
                     } label: {
                         HStack {
                             Text("More")
@@ -67,6 +72,7 @@ struct HomeView: View {
                     }
                 }
             }
+            .foregroundColor(.black)
             .padding(.horizontal)
         }
         .onAppear {

@@ -20,8 +20,12 @@ struct MoviesListView: View {
         ScrollView(showsIndicators: false) {
             LazyVGrid(columns: columns) {
                 ForEach(movies.prefix(numItem)) { movie in
-                    PosterView(movie: movie)
-                        .padding(.bottom)
+                    NavigationLink {
+                        MovieDetailView(viewModel: MovieDetailViewModel(), movie: movie)
+                    } label: {
+                        PosterView(movie: movie)
+                            .padding(.bottom)
+                    }
                 }
             }
         }
