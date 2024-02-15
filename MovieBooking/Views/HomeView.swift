@@ -56,6 +56,7 @@ struct HomeView: View {
                     
                     NavigationLink {
                         AllMovieView(viewModel: viewModel, status: $status)
+                            .foregroundColor(.black)
                     } label: {
                         HStack {
                             Text("More")
@@ -72,6 +73,7 @@ struct HomeView: View {
                     }
                 }
             }
+            .ignoresSafeArea(edges: .top)
             .foregroundColor(.black)
             .padding(.horizontal)
         }
