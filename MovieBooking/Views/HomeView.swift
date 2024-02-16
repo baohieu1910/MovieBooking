@@ -21,9 +21,11 @@ struct HomeView: View {
         NavigationView {
             ScrollView(showsIndicators: false) {
                 
-//                MovieSliderView(movies: viewModel.nowPlayingMovies)
-//                    .frame(height: 250)
-//                    .cornerRadius(5)
+                if viewModel.nowPlayingMovies.count > 0 {
+                    MovieSliderView(movies: viewModel.nowPlayingMovies)
+                        .frame(height: 250)
+                        .cornerRadius(5)
+                }
                 
                 VStack {
                     HStack {
@@ -76,10 +78,13 @@ struct HomeView: View {
             .ignoresSafeArea(edges: .top)
             .foregroundColor(.black)
             .padding(.horizontal)
-        }
-        .onAppear {
-            viewModel.getNowPlayingMovies()
-            viewModel.getUpcomingMovies()
+            .onAppear {
+                DispatchQueue.main.async {
+                    viewModel.getNowPlayingMovies()
+                    viewModel.getUpcomingMovies()
+                }
+                
+            }
         }
     }
 }
