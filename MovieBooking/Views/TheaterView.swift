@@ -11,6 +11,15 @@ struct TheaterView: View {
     @ObservedObject var viewModel = MoviesListViewModel()
     let theater: Theater
     
+    let columns = [
+        GridItem(),
+        GridItem(),
+        GridItem(),
+        GridItem()
+    ]
+    
+    @State var status = 0
+    
     var body: some View {
         
         ScrollView(showsIndicators: false) {
@@ -19,7 +28,7 @@ struct TheaterView: View {
                     Image(systemName: "location")
                     
                     Text("\(theater.address)")
-                    
+                        .lineLimit(1)
                 }
                 .foregroundColor(.gray)
                 
@@ -27,48 +36,79 @@ struct TheaterView: View {
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
-                        ForEach(1..<7) { date in
-                            Text("Date \(date)")
-                            
+                        ForEach(0..<5) { index in
+                            Button {
+                                status = index
+
+                            } label: {
+                                let date = futureDate(days: index)
+                                VStack {
+                                    Text("\(date.dayOfWeek())")
+                                    
+                                    Text("\(date.dayMonth())")
+                                }
+                                .foregroundColor(status == index ? .white : .black)
+                                .frame(width: UIScreen.screenWidth / 3, height: UIScreen.screenWidth / 6)
+                                .background(status == index ? Color("DarkBlue") : .white)
+                                .cornerRadius(5)
+                            }
                         }
                     }
                 }
                 
+                Divider()
+                
                 ForEach(viewModel.nowPlayingMovies) { movie in
-                    HStack {
-                        let url = URL(string: Utils.getMoviePoster(posterPath: movie.posterPath))
-                        AsyncImage(url: url) { image in
-                            image
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: UIScreen.screenWidth / 6)
-                                .cornerRadius(5)
+                    VStack {
+                        HStack {
+                            let url = URL(string: Utils.getMoviePoster(posterPath: movie.posterPath))
+                            AsyncImage(url: url) { image in
+                                image
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: UIScreen.screenWidth / 6)
+                                    .cornerRadius(5)
+                                
+                            } placeholder: {
+                                ProgressView()
+                                    .frame(width: UIScreen.screenWidth / 6, height: UIScreen.screenWidth * 3 / 12 )
+                            }
                             
-                        } placeholder: {
-                            ProgressView()
-                                .frame(width: UIScreen.screenWidth / 6, height: UIScreen.screenWidth * 3 / 12 )
+                            VStack(alignment: .leading) {
+                                Text("\(movie.title ?? "N/A")")
+                                
+                                HStack {
+                                    Image(systemName: "calendar")
+                                        .foregroundColor(.orange)
+                                    
+                                    Text("\(Utils.getReleaseDate(releaseDate: movie.releaseDate))")
+                                        .foregroundColor(.gray)
+                                }
+                                
+                                HStack {
+                                    Image(systemName: "star.fill")
+                                        .foregroundColor(.yellow)
+                                    
+                                    Text("\(movie.voteAverage ?? 0, specifier: "%.1f")")
+                                    
+                                }
+                            }
+                            .frame(maxWidth: .infinity, alignment: .leading)
                         }
                         
-                        VStack(alignment: .leading) {
-                            Text("\(movie.title ?? "N/A")")
-                            
-                            HStack {
-                                Image(systemName: "calendar")
-                                    .foregroundColor(.orange)
-                                
-                                Text("\(Utils.getReleaseDate(releaseDate: movie.releaseDate))")
-                                    .foregroundColor(.gray)
-                            }
-                            
-                            HStack {
-                                Image(systemName: "star.fill")
-                                    .foregroundColor(.yellow)
-                                
-                                Text("\(movie.voteAverage ?? 0, specifier: "%.1f")")
-                                
+                        LazyVGrid(columns: columns) {
+                            ForEach(ExampleData.times, id: \.self) { time in
+                                Text("\(time)")
+                                    .frame(width: UIScreen.screenWidth / 5, height: 40)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 5)
+                                            .stroke(Color.gray, lineWidth: 1)
+                                    )
+
                             }
                         }
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                        
+                        Divider()
                     }
                 }
             }
@@ -80,6 +120,24 @@ struct TheaterView: View {
             viewModel.getNowPlayingMovies()
         }
         
+    }
+    
+    func futureDate(days: Int) -> Date {
+        return Calendar.current.date(byAdding: .day, value: days, to: Date()) ?? Date()
+    }
+}
+
+extension Date {
+    func dayOfWeek() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE"
+        return formatter.string(from: self)
+    }
+    
+    func dayMonth() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM"
+        return formatter.string(from: self)
     }
 }
 

@@ -46,7 +46,7 @@ struct PosterView: View {
             
         } placeholder: {
             ProgressView()
-                .frame(width: imageWidth, height: imageWidth * 3 / 2 + 15)
+                .frame(width: imageWidth, height: imageWidth * 3 / 2 + 20)
         }
     }
 }
