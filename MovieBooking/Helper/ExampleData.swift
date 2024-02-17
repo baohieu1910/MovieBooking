@@ -13,4 +13,6 @@ enum ExampleData {
                              id: 634492,
                              title: "Madame Web",
                              voteAverage: 5.6)
+    
+    static let theater = Theater(name: "Galaxy Nguyen Du", address: "Nguyen Du, Q.1, TP.HCM", hotline: "11111111", imageName: "nguyen_du")
 }

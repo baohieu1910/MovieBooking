@@ -57,11 +57,13 @@ struct MovieDetailView: View {
                                             Image(systemName: "clock")
                                                 .foregroundColor(.orange)
                                             Text("\(viewModel.movie?.runtime ?? 0) mins")
+                                                .foregroundColor(.gray)
                                             
                                             Image(systemName: "calendar")
                                                 .foregroundColor(.orange)
                                             
                                             Text("\(Utils.getReleaseDate(releaseDate: viewModel.movie?.releaseDate))")
+                                                .foregroundColor(.gray)
                                         }
                                     }
                                     .frame(maxWidth: .infinity, alignment: .leading)

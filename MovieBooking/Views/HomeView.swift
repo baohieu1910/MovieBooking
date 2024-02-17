@@ -13,7 +13,7 @@ enum HomeStatus {
 }
 
 struct HomeView: View {
-    @ObservedObject var viewModel: MoviesListViewModel
+    @ObservedObject var viewModel = MoviesListViewModel()
     
     @State var status: HomeStatus = .nowPlaying
     
@@ -91,6 +91,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(viewModel: MoviesListViewModel())
+        HomeView()
     }
 }

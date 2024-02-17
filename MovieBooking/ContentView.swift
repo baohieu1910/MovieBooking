@@ -10,9 +10,14 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         TabView {
-            HomeView(viewModel: MoviesListViewModel())
+            HomeView()
                 .tabItem {
                     Label("Home", systemImage: "house")
+                }
+            
+            TheaterListView()
+                .tabItem {
+                    Label("Theater", systemImage: "camera.metering.partial")
                 }
             
             Text("Hello")
