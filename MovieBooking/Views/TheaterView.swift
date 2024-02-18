@@ -127,6 +127,8 @@ struct TheaterView: View {
     }
 }
 
+
+
 extension Date {
     func dayOfWeek() -> String {
         let formatter = DateFormatter()

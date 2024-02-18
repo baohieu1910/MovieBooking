@@ -9,9 +9,10 @@ import SwiftUI
 
 struct MovieDetailView: View {
     @ObservedObject var viewModel: MovieDetailViewModel
-    
     @ObservedObject var imagesVM = ImageListsViewModel()
     @ObservedObject var castVM = CastListViewModel()
+    @ObservedObject var theaterVM = TheaterListViewModel()
+    
     var movie: Movie
     
     @State var isShowMore = false
@@ -20,7 +21,15 @@ struct MovieDetailView: View {
         case information
         case news
     }
-    @State var status: Status = .information
+    @State var status: Status = .show
+    @State var dateStatus = 0
+    
+    let columns = [
+        GridItem(),
+        GridItem(),
+        GridItem(),
+        GridItem()
+    ]
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -119,7 +128,53 @@ struct MovieDetailView: View {
                 VStack {
                     switch status {
                     case .show:
-                        Text("show")
+                        VStack {
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                HStack {
+                                    ForEach(0..<5) { index in
+                                        Button {
+                                            dateStatus = index
+                                            
+                                        } label: {
+                                            let date = futureDate(days: index)
+                                            VStack {
+                                                Text("\(date.dayOfWeek())")
+                                                
+                                                Text("\(date.dayMonth())")
+                                            }
+                                            .foregroundColor(dateStatus == index ? .white : .black)
+                                            .frame(width: UIScreen.screenWidth / 3, height: UIScreen.screenWidth / 6)
+                                            .background(dateStatus == index ? Color("DarkBlue") : .white)
+                                            .cornerRadius(5)
+                                        }
+                                    }
+                                }
+                            }
+                            
+                            VStack(alignment: .leading) {
+                                ForEach(theaterVM.theaters) { theater in
+                                    VStack(alignment: .leading) {
+                                        Text("\(theater.name)")
+                                            .font(.system(size: 18, weight: .bold))
+                                        
+                                        LazyVGrid(columns: columns) {
+                                            ForEach(ExampleData.times, id: \.self) { time in
+                                                Text("\(time)")
+                                                    .frame(width: UIScreen.screenWidth / 5, height: 40)
+                                                    .overlay(
+                                                        RoundedRectangle(cornerRadius: 5)
+                                                            .stroke(Color.gray, lineWidth: 1)
+                                                    )
+                                            }
+                                        }
+                                    }
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                }
+                            }
+                            
+                        }
+                        .padding(.horizontal)
+                        
                     case .information:
                         VStack(alignment: .leading) {
                             VStack(alignment: .leading) {
@@ -186,8 +241,9 @@ struct MovieDetailView: View {
         }
     }
     
-    
-    
+    func futureDate(days: Int) -> Date {
+        return Calendar.current.date(byAdding: .day, value: days, to: Date()) ?? Date()
+    }
 }
 
 struct MovieDetailView_Previews: PreviewProvider {
