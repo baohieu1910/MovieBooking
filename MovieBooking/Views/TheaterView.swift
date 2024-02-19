@@ -19,6 +19,7 @@ struct TheaterView: View {
     ]
     
     @State var status = 0
+    @State var date: Date = .now
     
     var body: some View {
         
@@ -39,6 +40,7 @@ struct TheaterView: View {
                         ForEach(0..<5) { index in
                             Button {
                                 status = index
+                                date = futureDate(days: index)
                                 
                             } label: {
                                 let date = futureDate(days: index)
@@ -98,13 +100,17 @@ struct TheaterView: View {
                         
                         LazyVGrid(columns: columns) {
                             ForEach(ExampleData.times, id: \.self) { time in
-                                Text("\(time)")
-                                    .frame(width: UIScreen.screenWidth / 5, height: 40)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 5)
-                                            .stroke(Color.gray, lineWidth: 1)
-                                    )
-                                
+                                NavigationLink {
+                                    BookingView(theaterName: theater.name, movieID: movie.id, date: date, time: time)
+                                } label: {
+                                    Text("\(time)")
+                                        .frame(width: UIScreen.screenWidth / 5, height: 40)
+                                        .foregroundColor(.black)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 5)
+                                                .stroke(Color.gray, lineWidth: 1)
+                                        )
+                                }
                             }
                         }
                         
