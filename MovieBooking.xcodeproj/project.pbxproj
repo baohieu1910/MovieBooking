@@ -109,16 +109,16 @@
 		A4535DDB2B761BE3003C657C /* MovieBooking */ = {
 			isa = PBXGroup;
 			children = (
-				A4535DDC2B761BE3003C657C /* MovieBookingApp.swift */,
+				A4CBF4B22B7CFB9E001C64D2 /* API */,
+				A4535DE02B761BE5003C657C /* Assets.xcassets */,
 				A4535DDE2B761BE3003C657C /* ContentView.swift */,
 				A4CBF4C32B7D00E3001C64D2 /* Extensions */,
 				A4CBF4B32B7CFBAD001C64D2 /* Helper */,
-				A4CBF4B22B7CFB9E001C64D2 /* API */,
-				A46BD2572B7CFA1700B2D172 /* Views */,
-				A46BD2562B7CFA0F00B2D172 /* ViewModels */,
 				A46BD2552B7CFA0600B2D172 /* Models */,
-				A4535DE02B761BE5003C657C /* Assets.xcassets */,
+				A4535DDC2B761BE3003C657C /* MovieBookingApp.swift */,
 				A4535DE22B761BE5003C657C /* Preview Content */,
+				A46BD2562B7CFA0F00B2D172 /* ViewModels */,
+				A46BD2572B7CFA1700B2D172 /* Views */,
 			);
 			path = MovieBooking;
 			sourceTree = "<group>";
@@ -161,16 +161,16 @@
 			isa = PBXGroup;
 			children = (
 				A4CBF4C82B7D221C001C64D2 /* AllMovieView.swift */,
-				A4CBF4D42B7E34B5001C64D2 /* ImageListView.swift */,
-				A4CBF4B92B7CFD27001C64D2 /* HomeView.swift */,
 				A4C4B1E82B81FFA600DC4D00 /* BookingView.swift */,
-				A4C4B1E62B807EEA00DC4D00 /* TheaterView.swift */,
+				A4CBF4DC2B7E702E001C64D2 /* CastListView.swift */,
+				A4CBF4B92B7CFD27001C64D2 /* HomeView.swift */,
+				A4CBF4D42B7E34B5001C64D2 /* ImageListView.swift */,
 				A4CBF4CE2B7E14E4001C64D2 /* MovieDetailView.swift */,
 				A4CBF4CA2B7DC95B001C64D2 /* MovieSliderView.swift */,
-				A4CBF4DC2B7E702E001C64D2 /* CastListView.swift */,
 				A4CBF4C62B7D0984001C64D2 /* MoviesListView.swift */,
-				A4C4B1E42B7F362700DC4D00 /* TheaterListView.swift */,
 				A4CBF4BF2B7CFE54001C64D2 /* PosterView.swift */,
+				A4C4B1E42B7F362700DC4D00 /* TheaterListView.swift */,
+				A4C4B1E62B807EEA00DC4D00 /* TheaterView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

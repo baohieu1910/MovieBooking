@@ -7,6 +7,24 @@
 
 import SwiftUI
 
+struct ScreenShape: Shape {
+    var screenCurveture: CGFloat = 30
+    var isClip = false
+    
+    func path(in rect: CGRect) -> Path {
+        
+        return Path{ path in
+            path.move(to: CGPoint(x: rect.origin.x + screenCurveture, y: rect.origin.y +  screenCurveture))
+            path.addQuadCurve(to: CGPoint(x: rect.width - screenCurveture, y: rect.origin.y + screenCurveture), control: CGPoint(x: rect.midX, y: rect.origin.y) )
+            if isClip{
+                path.addLine(to: CGPoint(x: rect.width, y: rect.height))
+                path.addLine(to: CGPoint(x: rect.origin.x, y: rect.height))
+                path.closeSubpath()
+            }
+        }
+    }
+}
+
 struct BookingView: View {
     @Environment(\.dismiss) var dismiss
     
@@ -15,7 +33,7 @@ struct BookingView: View {
     let theaterName: String
     let movieID: Int
     let date: Date
-    let time: String
+    @State var time: String
     
     let columns = Array(repeating: GridItem(), count: 9)
     
@@ -23,84 +41,146 @@ struct BookingView: View {
     
     var body: some View {
         VStack {
-            ScrollView(showsIndicators: false) {
-                VStack {
-                    LazyVGrid(columns: columns) {
-                        ForEach(0..<63) { num in
-                            if viewModel.checkConflicts(bookingCode: getCode(seatNum: num)) {
-                                RoundedRectangle(cornerRadius: 5)
-                                    .fill(.gray)
-                                    .frame(width: UIScreen.screenWidth / 12, height: UIScreen.screenWidth / 12)
-                            } else {
-                                Button {
-                                    print(getCode(seatNum: num))
-                                    bookingStatus[num].toggle()
-                                    
-                                } label: {
-                                    if bookingStatus[num] {
-                                        RoundedRectangle(cornerRadius: 5)
-                                            .fill(.orange)
-                                            .frame(width: UIScreen.screenWidth / 12, height: UIScreen.screenWidth / 12)
-                                    } else {
-                                        RoundedRectangle(cornerRadius: 5)
-                                            .stroke(Color.gray)
-                                            .frame(width: UIScreen.screenWidth / 12, height: UIScreen.screenWidth / 12)
-                                    }
+            ZStack {
+                Rectangle()
+                    .fill(LinearGradient(gradient: Gradient(colors: [Color.orange.opacity(0.3), .clear]) , startPoint: .init(x: 0.5, y: 0.0), endPoint: .init(x: 0.5, y: 0.5)) )
+                    .frame(height: 420)
+                    .clipShape(ScreenShape(isClip: true))
+                    .cornerRadius(20)
+                
+                ScreenShape()
+                    .stroke(style:  StrokeStyle(lineWidth: 5,  lineCap: .square ))
+                    .frame(height: 420)
+                    .foregroundColor(Color.gray)
+                
+                
+                LazyVGrid(columns: columns) {
+                    ForEach(0..<63) { num in
+                        if viewModel.checkConflicts(bookingCode: getCode(seatNum: num)) {
+                            RoundedRectangle(cornerRadius: 5)
+                                .fill(.gray)
+                                .frame(width: UIScreen.screenWidth / 12, height: UIScreen.screenWidth / 12)
+                        } else {
+                            Button {
+                                bookingStatus[num].toggle()
+                                
+                            } label: {
+                                if bookingStatus[num] {
+                                    RoundedRectangle(cornerRadius: 5)
+                                        .fill(.orange)
+                                        .frame(width: UIScreen.screenWidth / 12, height: UIScreen.screenWidth / 12)
+                                } else {
+                                    RoundedRectangle(cornerRadius: 5)
+                                        .stroke(Color.gray)
+                                        .frame(width: UIScreen.screenWidth / 12, height: UIScreen.screenWidth / 12)
                                 }
                             }
                         }
                     }
                 }
-                                
+                .padding(.vertical)
+            }
+            
+            HStack {
                 HStack {
-                    HStack {
-                        RoundedRectangle(cornerRadius: 5)
-                            .stroke(Color.gray)
-                            .frame(width: UIScreen.screenWidth / 12, height: UIScreen.screenWidth / 12)
-                        
-                        Text(": Available")
-                    }
+                    RoundedRectangle(cornerRadius: 5)
+                        .stroke(Color.gray)
+                        .frame(width: UIScreen.screenWidth / 12, height: UIScreen.screenWidth / 12)
                     
-                    HStack {
-                        RoundedRectangle(cornerRadius: 5)
-                            .fill(.orange)
-                            .frame(width: UIScreen.screenWidth / 12, height: UIScreen.screenWidth / 12)
-                        
-                        Text(": Selected")
-                    }
+                    Text(": Available")
+                }
+                
+                HStack {
+                    RoundedRectangle(cornerRadius: 5)
+                        .fill(.orange)
+                        .frame(width: UIScreen.screenWidth / 12, height: UIScreen.screenWidth / 12)
                     
+                    Text(": Selected")
+                }
+                
+                HStack {
+                    RoundedRectangle(cornerRadius: 5)
+                        .fill(.gray)
+                        .frame(width: UIScreen.screenWidth / 12, height: UIScreen.screenWidth / 12)
+                    
+                    Text(": Booked")
+                }
+            }
+            .padding(.vertical)
+            
+            VStack(alignment: .leading) {
+                Text("Time")
+                    .font(.system(size: 25, weight: .bold))
+                
+                ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
-                        RoundedRectangle(cornerRadius: 5)
-                            .fill(.gray)
-                            .frame(width: UIScreen.screenWidth / 12, height: UIScreen.screenWidth / 12)
-                        
-                        Text(": Booked")
+                        ForEach(ExampleData.times, id: \.self) { time in
+                            Button {
+                                self.time = time
+                                
+                            } label: {
+                                Text("\(time)")
+                                    .padding(.vertical)
+                                    .padding(.horizontal, 25)
+                                    .foregroundColor(.white)
+                                    .background(self.time == time ? .orange : .gray)
+                                    .cornerRadius(5)
+                            }
+                        }
                     }
                 }
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
             
-            if countNumBooking() > 0 {
-                Button {
-                    var bookingList = [BookingDetail]()
+            Spacer()
+            
+            HStack {
+                VStack {
+                    Text("\(String(countNumBooking())) seats")
                     
-                    for index in bookingStatus.indices {
-                        if bookingStatus[index] {
-                            let booking = BookingDetail(movieID: movieID, theaterName: theaterName, date: date, time: time, seatNum: index)
-                            bookingList.append(booking)
+                    Text("$\(countNumBooking() * 20)")
+                        .font(.system(size: 25, weight: .bold))
+                        .foregroundColor(.orange)
+                    
+                }
+                
+                Spacer()
+                
+                if countNumBooking() > 0 {
+                    Button {
+                        var bookingList = [BookingDetail]()
+                        
+                        for index in bookingStatus.indices {
+                            if bookingStatus[index] {
+                                let booking = BookingDetail(movieID: movieID, theaterName: theaterName, date: date, time: time, seatNum: index)
+                                bookingList.append(booking)
+                            }
                         }
+                        
+                        viewModel.addBookingList(bookings: bookingList)
+                        
+                        dismiss()
+                    } label: {
+                        Text("Buy Ticket")
+                            .padding(.vertical)
+                            .padding(.horizontal, 40)
+                            .foregroundColor(.white)
+                            .background(.orange)
+                            .cornerRadius(10)
                     }
                     
-                    viewModel.addBookingList(bookings: bookingList)
-                    
-                    dismiss()
-                } label: {
+                } else {
                     Text("Buy Ticket")
-                        .padding()
+                        .padding(.vertical)
+                        .padding(.horizontal, 40)
                         .foregroundColor(.white)
-                        .background(.orange)
+                        .background(.gray)
                         .cornerRadius(10)
                 }
             }
+            .padding(.horizontal)
+            
+            
         }
         .padding(.horizontal)
         .navigationTitle("Select Seats")
