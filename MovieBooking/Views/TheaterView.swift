@@ -39,7 +39,7 @@ struct TheaterView: View {
                         ForEach(0..<5) { index in
                             Button {
                                 status = index
-
+                                
                             } label: {
                                 let date = futureDate(days: index)
                                 VStack {
@@ -104,7 +104,7 @@ struct TheaterView: View {
                                         RoundedRectangle(cornerRadius: 5)
                                             .stroke(Color.gray, lineWidth: 1)
                                     )
-
+                                
                             }
                         }
                         
@@ -124,22 +124,6 @@ struct TheaterView: View {
     
     func futureDate(days: Int) -> Date {
         return Calendar.current.date(byAdding: .day, value: days, to: Date()) ?? Date()
-    }
-}
-
-
-
-extension Date {
-    func dayOfWeek() -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE"
-        return formatter.string(from: self)
-    }
-    
-    func dayMonth() -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM"
-        return formatter.string(from: self)
     }
 }
 

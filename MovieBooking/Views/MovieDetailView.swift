@@ -15,6 +15,8 @@ struct MovieDetailView: View {
     
     var movie: Movie
     
+    @State var date: Date = .now
+    
     @State var isShowMore = false
     enum Status {
         case show
@@ -134,6 +136,7 @@ struct MovieDetailView: View {
                                     ForEach(0..<5) { index in
                                         Button {
                                             dateStatus = index
+                                            date = futureDate(days: index)
                                             
                                         } label: {
                                             let date = futureDate(days: index)
@@ -159,12 +162,17 @@ struct MovieDetailView: View {
                                         
                                         LazyVGrid(columns: columns) {
                                             ForEach(ExampleData.times, id: \.self) { time in
-                                                Text("\(time)")
-                                                    .frame(width: UIScreen.screenWidth / 5, height: 40)
-                                                    .overlay(
-                                                        RoundedRectangle(cornerRadius: 5)
-                                                            .stroke(Color.gray, lineWidth: 1)
-                                                    )
+                                                NavigationLink {
+                                                    BookingView(theaterName: theater.name, movieID: viewModel.movie?.id ?? 0, date: date, time: time)
+                                                } label: {
+                                                    Text("\(time)")
+                                                        .frame(width: UIScreen.screenWidth / 5, height: 40)
+                                                        .overlay(
+                                                            RoundedRectangle(cornerRadius: 5)
+                                                                .stroke(Color.gray, lineWidth: 1)
+                                                        )
+                                                        .foregroundColor(.black)
+                                                }
                                             }
                                         }
                                     }
