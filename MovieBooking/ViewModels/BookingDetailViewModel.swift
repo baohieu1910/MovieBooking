@@ -14,6 +14,9 @@ class BookingDetailViewModel: ObservableObject {
         load()
     }
     
+}
+
+extension BookingDetailViewModel {
     func addBookingList(bookings: [BookingDetail]) {
         for booking in bookings {
             self.details.append(booking)
@@ -51,4 +54,8 @@ class BookingDetailViewModel: ObservableObject {
         }
         self.details = try! JSONDecoder().decode([BookingDetail].self, from: data)
     }
+}
+
+private extension BookingDetailViewModel {
+    
 }

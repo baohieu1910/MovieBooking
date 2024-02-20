@@ -13,6 +13,10 @@ class MoviesListViewModel: ObservableObject {
     
     private lazy var apiService = APIService()
     
+
+}
+
+extension MoviesListViewModel {
     func getNowPlayingMovies() {
         apiService.getNowPlayingMovies(page: 1) { [weak self] movies in
             self?.nowPlayingMovies = movies
@@ -24,5 +28,8 @@ class MoviesListViewModel: ObservableObject {
             self?.upcomingMovies = movies
         }
     }
+}
+
+private extension MoviesListViewModel {
     
 }

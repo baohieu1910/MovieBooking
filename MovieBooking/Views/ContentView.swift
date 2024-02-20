@@ -20,7 +20,7 @@ struct ContentView: View {
                     Label("Theater", systemImage: "camera.metering.partial")
                 }
             
-            Text("Hello")
+            UserView()
                 .tabItem {
                     Label("User", systemImage: "person")
                 }
