@@ -23,9 +23,19 @@ extension UsersViewModel {
         save()
     }
     
+    func checkLogin(username: String, password: String) -> Bool {
+        for user in users {
+            if user.username.uppercased() == username.uppercased() && user.password == password {
+                return true
+            }
+        }
+        
+        return false
+    }
+    
     func checkUsername(username: String) -> Bool {
         for user in users {
-            if username == user.username {
+            if username.uppercased() == user.username.uppercased() {
                 return true
             }
         }

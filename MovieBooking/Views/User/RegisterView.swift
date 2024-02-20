@@ -110,7 +110,7 @@ struct RegisterView: View {
             }
             .padding(.vertical)
             
-            if !checkUserName() && !checkPassword() && !checkConfirmPassword() && checkEmpty() {
+            if !checkUserName() && !checkPassword() && !checkConfirmPassword() && checkEmpty() && !viewModel.checkUsername(username: username) {
                 Button {
                     let newUser = User(username: username, password: password)
                     viewModel.add(user: newUser)
