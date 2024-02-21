@@ -27,17 +27,17 @@ struct ScreenShape: Shape {
 
 struct BookingView: View {
     @Environment(\.dismiss) var dismiss
-    
+    @ObservedObject var userManager = UserManager.shared
     @ObservedObject var viewModel = BookingDetailViewModel()
     
     let theaterName: String
     let movieID: Int
     let date: Date
+    
     @State var time: String
-    
-    let columns = Array(repeating: GridItem(), count: 9)
-    
     @State var bookingStatus = [Bool](repeating: false, count: 64)
+    let columns = Array(repeating: GridItem(), count: 9)
+    @State var showLoginSheet = false
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -149,18 +149,22 @@ struct BookingView: View {
                     
                     if countNumBooking() > 0 {
                         Button {
-                            var bookingList = [BookingDetail]()
-                            
-                            for index in bookingStatus.indices {
-                                if bookingStatus[index] {
-                                    let booking = BookingDetail(movieID: movieID, theaterName: theaterName, date: date, time: time, seatNum: index)
-                                    bookingList.append(booking)
+                            if let user = userManager.currentUser {
+                                var bookingList = [BookingDetail]()
+                                
+                                for index in bookingStatus.indices {
+                                    if bookingStatus[index] {
+                                        let booking = BookingDetail(movieID: movieID, theaterName: theaterName, date: date, time: time, seatNum: index)
+                                        bookingList.append(booking)
+                                    }
                                 }
+                                
+                                viewModel.addBookingList(bookings: bookingList)
+                                
+                                dismiss()
+                            } else {
+                                showLoginSheet.toggle()
                             }
-                            
-                            viewModel.addBookingList(bookings: bookingList)
-                            
-                            dismiss()
                         } label: {
                             Text("Buy Ticket")
                                 .padding(.vertical)
@@ -168,6 +172,9 @@ struct BookingView: View {
                                 .foregroundColor(.white)
                                 .background(.orange)
                                 .cornerRadius(10)
+                        }
+                        .sheet(isPresented: $showLoginSheet) {
+                            LoginView()
                         }
                         
                     } else {

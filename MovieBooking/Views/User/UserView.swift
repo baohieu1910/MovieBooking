@@ -9,9 +9,10 @@ import SwiftUI
 
 struct UserView: View {
     @ObservedObject var viewModel = UsersViewModel()
+    @ObservedObject var userManager = UserManager.shared
     
-    @State var user: User?
-//    var user = User(username: "123", password: "123")
+//    @State var user: User?
+    @State var user = User(username: "123", password: "123")
     
     @State var username: String = ""
     @State var password: String = ""
@@ -19,8 +20,68 @@ struct UserView: View {
     
     var body: some View {
         NavigationView {
-            if let user = user {
-                Text("User view")
+//            if let user = user {
+            if let user = userManager.currentUser {
+                VStack {
+                    VStack {
+                        HStack {
+                            Image(systemName: "person")
+                                .font(.system(size: 50))
+                                .frame(width: UIScreen.screenWidth / 5, height: UIScreen.screenWidth / 5)
+                                .background(Color("LightGray"))
+                                .cornerRadius(90)
+                                .padding()
+                            
+                            VStack {
+                                Text("\(user.username)")
+                                    .font(.title)
+                                
+                                
+                            }
+                            
+                            Spacer()
+                        }
+                        
+                        Button {
+                            
+                        } label: {
+                            HStack {
+                                Image(systemName: "clock.arrow.circlepath")
+                                
+                                Text("History")
+                            }
+                            .font(.system(size: 18))
+                            .foregroundColor(.black)
+                        }
+                        
+                        Divider()
+                    }
+                    
+                    Spacer()
+                    
+                    VStack(alignment: .leading) {
+                        Text("Total Spending")
+                            .font(.system(size: 18, weight: .bold))
+                        
+                        Divider()
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    Spacer()
+                    
+                    Button {
+                        userManager.logout()
+                    } label: {
+                        Text("Log Out")
+                            .padding(.vertical)
+                            .padding(.horizontal, UIScreen.screenWidth / 3)
+                            .font(.system(size: 20))
+                            .foregroundColor(.white)
+                            .background(.orange)
+                            .cornerRadius(10)
+                    }
+                }
+                .padding()
             } else {
                 VStack {
                     Text("Login to your account")
@@ -62,7 +123,8 @@ struct UserView: View {
                     
                     Button {
                         if viewModel.checkLogin(username: username, password: password) {
-                            user = User(username: username, password: password)
+                            userManager.login(username: username, password: password)
+                            
                         } else {
                             loginError.toggle()
                         }
@@ -78,7 +140,7 @@ struct UserView: View {
                     }
                     .alert("Incorrect username or password. Please try again.", isPresented: $loginError) {
                         Button("OK", role: .cancel) {
-                            gi
+                            
                         }
                     }
                     

@@ -25,6 +25,8 @@
 		A4C4B1F62B84975900DC4D00 /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C4B1F52B84975900DC4D00 /* UsersViewModel.swift */; };
 		A4C4B1F82B84996B00DC4D00 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C4B1F72B84996B00DC4D00 /* UserView.swift */; };
 		A4C4B1FA2B849E9A00DC4D00 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C4B1F92B849E9A00DC4D00 /* RegisterView.swift */; };
+		A4C4B1FD2B85FFF800DC4D00 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C4B1FC2B85FFF600DC4D00 /* UserManager.swift */; };
+		A4C4B1FF2B862A0D00DC4D00 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C4B1FE2B862A0D00DC4D00 /* LoginView.swift */; };
 		A4CBF4B62B7CFBC1001C64D2 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CBF4B52B7CFBC1001C64D2 /* APIService.swift */; };
 		A4CBF4B82B7CFC60001C64D2 /* MoviesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CBF4B72B7CFC60001C64D2 /* MoviesListViewModel.swift */; };
 		A4CBF4BA2B7CFD27001C64D2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CBF4B92B7CFD27001C64D2 /* HomeView.swift */; };
@@ -66,6 +68,8 @@
 		A4C4B1F52B84975900DC4D00 /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
 		A4C4B1F72B84996B00DC4D00 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		A4C4B1F92B849E9A00DC4D00 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		A4C4B1FC2B85FFF600DC4D00 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		A4C4B1FE2B862A0D00DC4D00 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		A4CBF4B52B7CFBC1001C64D2 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		A4CBF4B72B7CFC60001C64D2 /* MoviesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListViewModel.swift; sourceTree = "<group>"; };
 		A4CBF4B92B7CFD27001C64D2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -156,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				A4C4B1EE2B8357FD00DC4D00 /* BookingDetailViewModel.swift */,
+				A4C4B1FC2B85FFF600DC4D00 /* UserManager.swift */,
 				A4C4B1F52B84975900DC4D00 /* UsersViewModel.swift */,
 				A4CBF4DA2B7E6FC0001C64D2 /* CastListViewModel.swift */,
 				A4CBF4D62B7E34D3001C64D2 /* ImagesListViewModel.swift */,
@@ -207,6 +212,7 @@
 			children = (
 				A4C4B1F92B849E9A00DC4D00 /* RegisterView.swift */,
 				A4C4B1F72B84996B00DC4D00 /* UserView.swift */,
+				A4C4B1FE2B862A0D00DC4D00 /* LoginView.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -321,11 +327,13 @@
 				A4C4B1EF2B8357FD00DC4D00 /* BookingDetailViewModel.swift in Sources */,
 				A4C4B1EB2B8213D800DC4D00 /* BookingDetail.swift in Sources */,
 				A4CBF4D72B7E34D3001C64D2 /* ImagesListViewModel.swift in Sources */,
+				A4C4B1FF2B862A0D00DC4D00 /* LoginView.swift in Sources */,
 				A4C4B1F82B84996B00DC4D00 /* UserView.swift in Sources */,
 				A4CBF4B62B7CFBC1001C64D2 /* APIService.swift in Sources */,
 				A4535DDD2B761BE3003C657C /* MovieBookingApp.swift in Sources */,
 				A4CBF4B82B7CFC60001C64D2 /* MoviesListViewModel.swift in Sources */,
 				A4CBF4C02B7CFE54001C64D2 /* PosterView.swift in Sources */,
+				A4C4B1FD2B85FFF800DC4D00 /* UserManager.swift in Sources */,
 				A4CBF4C52B7D00FA001C64D2 /* UIScreen.swift in Sources */,
 				A4CBF4CB2B7DC95C001C64D2 /* MovieSliderView.swift in Sources */,
 				A46BD2542B7CF99D00B2D172 /* Movie.swift in Sources */,
