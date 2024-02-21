@@ -113,7 +113,7 @@ struct RegisterView: View {
             if !checkUserName() && !checkPassword() && !checkConfirmPassword() && checkEmpty() && !viewModel.checkUsername(username: username) {
                 Button {
                     let newUser = User(username: username, password: password)
-                    viewModel.add(user: newUser)
+                    viewModel.addUser(user: newUser, bookings: [])
                     
                     print(viewModel.users)
                     

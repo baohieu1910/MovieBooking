@@ -28,7 +28,8 @@ struct ScreenShape: Shape {
 struct BookingView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject var userManager = UserManager.shared
-    @ObservedObject var viewModel = BookingDetailViewModel()
+//    @ObservedObject var viewModel = BookingDetailViewModel()
+    @ObservedObject var viewModel = UsersViewModel()
     
     let theaterName: String
     let movieID: Int
@@ -57,7 +58,7 @@ struct BookingView: View {
                     
                     LazyVGrid(columns: columns) {
                         ForEach(0..<63) { num in
-                            if viewModel.checkConflicts(bookingCode: getCode(seatNum: num)) {
+                            if viewModel.checkBookings(bookingCode: getCode(seatNum: num)) {
                                 RoundedRectangle(cornerRadius: 5)
                                     .fill(.gray)
                                     .frame(width: UIScreen.screenWidth / 12, height: UIScreen.screenWidth / 12)
@@ -159,7 +160,7 @@ struct BookingView: View {
                                     }
                                 }
                                 
-                                viewModel.addBookingList(bookings: bookingList)
+                                viewModel.addBookingList(user: userManager.currentUser ?? User(username: "", password: ""), bookings: bookingList)
                                 
                                 dismiss()
                             } else {
