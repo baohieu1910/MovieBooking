@@ -23,8 +23,6 @@ struct UserView: View {
 //            if let user = user {
             if let user = userManager.currentUser {
                 VStack {
-                    let bookingHistory = viewModel.getBookingHistory(user: user)
-                    
                     VStack {
                         HStack {
                             Image(systemName: "person")
@@ -38,18 +36,17 @@ struct UserView: View {
                                 Text("\(user.username)")
                                     .font(.title)
                                 
-                                
                             }
                             
                             Spacer()
                         }
 
                         NavigationLink {
-                            BookingHistory(bookingHistory: bookingHistory)
+                            BookingHistory(bookingHistory: viewModel.getBookingHistory(user: user))
                         } label: {
                             HStack {
                                 Image(systemName: "clock.arrow.circlepath")
-                                
+
                                 Text("History")
                             }
                             .font(.system(size: 18))
@@ -63,7 +60,7 @@ struct UserView: View {
                         Text("Total Spending")
                             .font(.system(size: 18, weight: .bold))
                         
-                        Text("$\(bookingHistory.count * 20)")
+                        Text("$\(viewModel.getBookingHistory(user: user).count * 20)")
                             .font(.system(size: 25, weight: .bold))
                             .foregroundColor(.orange)
                             
@@ -87,6 +84,11 @@ struct UserView: View {
                     }
                 }
                 .padding()
+                .onAppear {
+                    viewModel.load()
+                }
+                .navigationTitle("User")
+                .navigationBarTitleDisplayMode(.inline)
             } else {
                 VStack {
                     Text("Login to your account")

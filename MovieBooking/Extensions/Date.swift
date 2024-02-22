@@ -33,11 +33,9 @@ extension Date {
         let dateString = formatter.string(from: self)
         
         var calendar = Calendar.current
-
         if let timeZone = TimeZone(identifier: "VN") {
            calendar.timeZone = timeZone
         }
-
         let hour = calendar.component(.hour, from: self)
         let minute = calendar.component(.minute, from: self)
         let second = calendar.component(.second, from: self)

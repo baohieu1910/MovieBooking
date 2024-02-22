@@ -28,7 +28,6 @@ struct ScreenShape: Shape {
 struct BookingView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject var userManager = UserManager.shared
-//    @ObservedObject var viewModel = BookingDetailViewModel()
     @ObservedObject var viewModel = UsersViewModel()
     
     let theaterName: String
