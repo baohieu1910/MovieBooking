@@ -23,6 +23,8 @@ struct UserView: View {
 //            if let user = user {
             if let user = userManager.currentUser {
                 VStack {
+                    let bookingHistory = viewModel.getBookingHistory(user: user)
+                    
                     VStack {
                         HStack {
                             Image(systemName: "person")
@@ -41,9 +43,9 @@ struct UserView: View {
                             
                             Spacer()
                         }
-                        
-                        Button {
-                            
+
+                        NavigationLink {
+                            BookingHistory(bookingHistory: bookingHistory)
                         } label: {
                             HStack {
                                 Image(systemName: "clock.arrow.circlepath")
@@ -57,11 +59,14 @@ struct UserView: View {
                         Divider()
                     }
                     
-                    Spacer()
-                    
                     VStack(alignment: .leading) {
                         Text("Total Spending")
                             .font(.system(size: 18, weight: .bold))
+                        
+                        Text("$\(bookingHistory.count * 20)")
+                            .font(.system(size: 25, weight: .bold))
+                            .foregroundColor(.orange)
+                            
                         
                         Divider()
                     }
@@ -148,7 +153,7 @@ struct UserView: View {
                         Text("Already have an account?")
                         
                         NavigationLink {
-                            RegisterView()
+                            RegisterView(viewModel: viewModel)
                         } label: {
                             Text("Sign up")
                                 .foregroundColor(.blue)

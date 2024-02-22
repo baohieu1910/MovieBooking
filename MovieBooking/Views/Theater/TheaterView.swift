@@ -101,7 +101,7 @@ struct TheaterView: View {
                         LazyVGrid(columns: columns) {
                             ForEach(ExampleData.times, id: \.self) { time in
                                 NavigationLink {
-                                    BookingView(theaterName: theater.name, movieID: movie.id, date: date, time: time)
+                                    BookingView(theaterName: theater.name, movieID: movie.id, movieName: movie.title ?? "", date: date, time: time)
                                 } label: {
                                     Text("\(time)")
                                         .frame(width: UIScreen.screenWidth / 5, height: 40)

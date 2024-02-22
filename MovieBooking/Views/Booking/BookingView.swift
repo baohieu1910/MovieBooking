@@ -33,6 +33,7 @@ struct BookingView: View {
     
     let theaterName: String
     let movieID: Int
+    let movieName: String
     let date: Date
     
     @State var time: String
@@ -155,7 +156,7 @@ struct BookingView: View {
                                 
                                 for index in bookingStatus.indices {
                                     if bookingStatus[index] {
-                                        let booking = BookingDetail(movieID: movieID, theaterName: theaterName, date: date, time: time, seatNum: index)
+                                        let booking = BookingDetail(movieID: movieID, movieName: movieName, theaterName: theaterName, date: date, time: time, seatNum: index, dateBooking: Date.now)
                                         bookingList.append(booking)
                                     }
                                 }
@@ -213,8 +214,8 @@ struct BookingView: View {
     }
 }
 
-struct BookingView_Previews: PreviewProvider {
-    static var previews: some View {
-        BookingView(theaterName: "ABC", movieID: 1, date: Date.now, time: "9:00")
-    }
-}
+//struct BookingView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BookingView(theaterName: "ABC", movieID: 1, date: Date.now, time: "9:00")
+//    }
+//}

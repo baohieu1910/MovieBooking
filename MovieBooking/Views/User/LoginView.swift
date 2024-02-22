@@ -84,7 +84,7 @@ struct LoginView: View {
                     Text("Already have an account?")
                     
                     NavigationLink {
-                        RegisterView()
+                        RegisterView(viewModel: viewModel)
                     } label: {
                         Text("Sign up")
                             .foregroundColor(.blue)

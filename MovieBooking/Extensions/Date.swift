@@ -26,4 +26,22 @@ extension Date {
         formatter.dateFormat = "dd/MM/yyyy"
         return formatter.string(from: self)
     }
+    
+    func getHour() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy"
+        let dateString = formatter.string(from: self)
+        
+        var calendar = Calendar.current
+
+        if let timeZone = TimeZone(identifier: "VN") {
+           calendar.timeZone = timeZone
+        }
+
+        let hour = calendar.component(.hour, from: self)
+        let minute = calendar.component(.minute, from: self)
+        let second = calendar.component(.second, from: self)
+        
+        return String(hour) + ":" + String(minute) + ":" + String(second) + ", " + dateString
+    }
 }

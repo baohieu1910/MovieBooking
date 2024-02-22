@@ -17,10 +17,6 @@ struct UserDetail: Codable {
 class UsersViewModel: ObservableObject {
     @Published var users: [UserDetail] = []
     
-    
-    
-    
-    
     init() {
         load()
     }
@@ -39,8 +35,18 @@ extension UsersViewModel {
         }
         
         save()
+        load()
     }
     
+    func getBookingHistory(user: User) -> [BookingDetail] {
+        for userDetail in users {
+            if userDetail.user.username == user.username {
+                return userDetail.bookings
+            }
+        }
+        
+        return []
+    }
     
     func checkBookings(bookingCode: String) -> Bool {
         for userDetail in users {
@@ -58,6 +64,7 @@ extension UsersViewModel {
         users.append(newUser)
             
         save()
+        load()
     }
     
     func checkLogin(username: String, password: String) -> Bool {

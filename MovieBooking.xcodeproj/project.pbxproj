@@ -13,6 +13,7 @@
 		A4535DE42B761BE5003C657C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4535DE32B761BE5003C657C /* Preview Assets.xcassets */; };
 		A46BD2542B7CF99D00B2D172 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46BD2532B7CF99D00B2D172 /* Movie.swift */; };
 		A46BD2592B7CFA8C00B2D172 /* MovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46BD2582B7CFA8C00B2D172 /* MovieDetail.swift */; };
+		A4BF57912B86E8D3007AFD04 /* BookingHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BF57902B86E8D3007AFD04 /* BookingHistory.swift */; };
 		A4C4B1E12B7F333700DC4D00 /* Theater.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C4B1E02B7F333600DC4D00 /* Theater.swift */; };
 		A4C4B1E32B7F33B600DC4D00 /* TheaterListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C4B1E22B7F33B600DC4D00 /* TheaterListViewModel.swift */; };
 		A4C4B1E52B7F362700DC4D00 /* TheaterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C4B1E42B7F362700DC4D00 /* TheaterListView.swift */; };
@@ -55,6 +56,7 @@
 		A4535DE32B761BE5003C657C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A46BD2532B7CF99D00B2D172 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		A46BD2582B7CFA8C00B2D172 /* MovieDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetail.swift; sourceTree = "<group>"; };
+		A4BF57902B86E8D3007AFD04 /* BookingHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingHistory.swift; sourceTree = "<group>"; };
 		A4C4B1E02B7F333600DC4D00 /* Theater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theater.swift; sourceTree = "<group>"; };
 		A4C4B1E22B7F33B600DC4D00 /* TheaterListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheaterListViewModel.swift; sourceTree = "<group>"; };
 		A4C4B1E42B7F362700DC4D00 /* TheaterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheaterListView.swift; sourceTree = "<group>"; };
@@ -171,7 +173,7 @@
 		A46BD2572B7CFA1700B2D172 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A4C4B1E82B81FFA600DC4D00 /* BookingView.swift */,
+				A4BF57922B86E8D7007AFD04 /* Booking */,
 				A4CBF4DC2B7E702E001C64D2 /* CastListView.swift */,
 				A4535DDE2B761BE3003C657C /* ContentView.swift */,
 				A4CBF4B92B7CFD27001C64D2 /* HomeView.swift */,
@@ -180,6 +182,15 @@
 				A4C4B1FB2B849EA500DC4D00 /* User */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		A4BF57922B86E8D7007AFD04 /* Booking */ = {
+			isa = PBXGroup;
+			children = (
+				A4C4B1E82B81FFA600DC4D00 /* BookingView.swift */,
+				A4BF57902B86E8D3007AFD04 /* BookingHistory.swift */,
+			);
+			path = Booking;
 			sourceTree = "<group>";
 		};
 		A4C4B1F02B83D3D300DC4D00 /* Movie */ = {
@@ -317,6 +328,7 @@
 				A4CBF4C92B7D221C001C64D2 /* AllMovieView.swift in Sources */,
 				A4C4B1F42B8496F800DC4D00 /* User.swift in Sources */,
 				A4C4B1E32B7F33B600DC4D00 /* TheaterListViewModel.swift in Sources */,
+				A4BF57912B86E8D3007AFD04 /* BookingHistory.swift in Sources */,
 				A4CBF4C22B7CFFA0001C64D2 /* Constants.swift in Sources */,
 				A4CBF4BA2B7CFD27001C64D2 /* HomeView.swift in Sources */,
 				A4C4B1E72B807EEA00DC4D00 /* TheaterView.swift in Sources */,

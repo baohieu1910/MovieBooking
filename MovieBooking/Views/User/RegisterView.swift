@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RegisterView: View {
-    @ObservedObject var viewModel = UsersViewModel()
+    @ObservedObject var viewModel: UsersViewModel
     @Environment(\.dismiss) var dismiss
     
     @State var username: String = ""
@@ -162,6 +162,6 @@ struct RegisterView: View {
 
 struct RegisterView_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterView()
+        RegisterView(viewModel: UsersViewModel())
     }
 }
