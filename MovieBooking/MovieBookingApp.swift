@@ -13,6 +13,7 @@ struct MovieBookingApp: App {
         WindowGroup {
             ContentView()
                 .preferredColorScheme(.light)
+                .environment(\.managedObjectContext, CoreDataManager.shared.viewContext)
         }
     }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BookingHistory: View {
-    var bookingHistory: [Booking]
+    var bookingHistory: [Bookings]
     
     var body: some View {
         List {
@@ -17,27 +17,27 @@ struct BookingHistory: View {
                     NavigationLink {
                         Form {
                             Section("Theater") {
-                                Text("\(booking.theaterName)")
+                                Text("\(booking.theaterName ?? "")")
                             }
                             
                             Section("Movie") {
-                                Text("\(booking.movieName)")
+                                Text("\(booking.movieName ?? "")")
                             }
                             
                             Section("Date") {
-                                Text("\(booking.date.dayMonthYear())")
+                                Text("\(booking.date?.dayMonthYear() ?? "")")
                             }
                             
                             Section("Time") {
-                                Text("\(booking.time)")
+                                Text("\(booking.time ?? "")")
                             }
                             
                             Section("Seat") {
-                                Text("\(booking.seatNum)")
+                                Text("\(booking.seatNum )")
                             }
                         }
                     } label: {
-                        Text("\(booking.dateBooking.getHour())")
+                        Text("\(booking.dateBooking?.getHour() ?? "")")
                     }
                 }
             }

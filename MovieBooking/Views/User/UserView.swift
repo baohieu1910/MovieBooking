@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct UserView: View {
-    @ObservedObject var viewModel = UsersViewModel()
+//    @ObservedObject var viewModel = UsersViewModel()
+    @ObservedObject var userListViewModel = UserListViewModel()
     @ObservedObject var userManager = UserManager.shared
     
 //    @State var user: User?
@@ -33,7 +34,7 @@ struct UserView: View {
                                 .padding()
                             
                             VStack {
-                                Text("\(user.username)")
+                                Text("\(user.username ?? "")")
                                     .font(.title)
                                 
                             }
@@ -42,7 +43,7 @@ struct UserView: View {
                         }
 
                         NavigationLink {
-                            BookingHistory(bookingHistory: viewModel.getBookingHistory(user: user))
+                            BookingHistory(bookingHistory: user.bookingsHistory)
                         } label: {
                             HStack {
                                 Image(systemName: "clock.arrow.circlepath")
@@ -60,7 +61,8 @@ struct UserView: View {
                         Text("Total Spending")
                             .font(.system(size: 18, weight: .bold))
                         
-                        Text("$\(viewModel.getBookingHistory(user: user).count * 20)")
+//                        Text("$\(viewModel.getBookingHistory(user: user).count * 20)")
+                        Text("$ \(user.bookingsHistory.count )")
                             .font(.system(size: 25, weight: .bold))
                             .foregroundColor(.orange)
                             
@@ -85,7 +87,8 @@ struct UserView: View {
                 }
                 .padding()
                 .onAppear {
-                    viewModel.load()
+//                    viewModel.load()
+                    userListViewModel.updateUsers()
                 }
                 .navigationTitle("User")
                 .navigationBarTitleDisplayMode(.inline)
@@ -129,7 +132,7 @@ struct UserView: View {
                     
                     
                     Button {
-                        if viewModel.checkLogin(username: username, password: password) {
+                        if userListViewModel.checkLogin(username: username, password: password) {
                             userManager.login(username: username, password: password)
                             
                         } else {
@@ -155,7 +158,7 @@ struct UserView: View {
                         Text("Already have an account?")
                         
                         NavigationLink {
-                            RegisterView(viewModel: viewModel)
+                            RegisterView(userListViewModel: userListViewModel)
                         } label: {
                             Text("Sign up")
                                 .foregroundColor(.blue)

@@ -9,10 +9,12 @@
         <attribute name="seatNum" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="theaterName" optional="YES" attributeType="String"/>
         <attribute name="time" optional="YES" attributeType="String"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Users" inverseName="bookings" inverseEntity="Users"/>
     </entity>
     <entity name="Users" representedClassName="Users" syncable="YES">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="password" optional="YES" attributeType="String"/>
         <attribute name="username" optional="YES" attributeType="String"/>
+        <relationship name="bookings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Bookings" inverseName="user" inverseEntity="Bookings"/>
     </entity>
 </model>

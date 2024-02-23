@@ -11,13 +11,16 @@ import Foundation
 class UserManager: ObservableObject {
     static var shared = UserManager()
     
-    @Published var currentUser : User? = nil
+    @Published var currentUser : Users? = nil
     
 }
     
 extension UserManager {
     func login(username: String, password: String) {
-        currentUser = User(username: username, password: password)
+        let newUser = Users(context: CoreDataManager.shared.viewContext)
+        newUser.username = username
+        newUser.password = password
+        currentUser = newUser
     }
     
     func logout() {

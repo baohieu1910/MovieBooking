@@ -11,6 +11,7 @@ struct LoginView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject var userManager = UserManager.shared
     @ObservedObject var viewModel = UsersViewModel()
+    @ObservedObject var userListViewModel = UserListViewModel()
     
     @State var username: String = ""
     @State var password: String = ""
@@ -57,7 +58,7 @@ struct LoginView: View {
                 
                 
                 Button {
-                    if viewModel.checkLogin(username: username, password: password) {
+                    if userListViewModel.checkLogin(username: username, password: password) {
                         userManager.login(username: username, password: password)
                         dismiss()
                         
@@ -84,7 +85,7 @@ struct LoginView: View {
                     Text("Already have an account?")
                     
                     NavigationLink {
-                        RegisterView(viewModel: viewModel)
+                        RegisterView(userListViewModel: userListViewModel)
                     } label: {
                         Text("Sign up")
                             .foregroundColor(.blue)

@@ -18,6 +18,7 @@ class UsersViewModel: ObservableObject {
     @Published var users: [UserDetail] = []
     
     init() {
+        
         load()
     }
 }

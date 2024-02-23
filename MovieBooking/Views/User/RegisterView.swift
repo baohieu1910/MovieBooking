@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct RegisterView: View {
-    @ObservedObject var viewModel: UsersViewModel
+//    @ObservedObject var viewModel = UsersViewModel()
+    @ObservedObject var userListViewModel: UserListViewModel
+    
     @Environment(\.dismiss) var dismiss
     
     @State var username: String = ""
@@ -38,7 +40,7 @@ struct RegisterView: View {
                             .italic()
                         
                     } else {
-                        if viewModel.checkUsername(username: username) {
+                        if userListViewModel.checkUsername(username: username) {
                             Text("Username has already been taken.")
                                 .font(.subheadline)
                                 .foregroundColor(.red)
@@ -110,12 +112,12 @@ struct RegisterView: View {
             }
             .padding(.vertical)
             
-            if !checkUserName() && !checkPassword() && !checkConfirmPassword() && checkEmpty() && !viewModel.checkUsername(username: username) {
+            if !checkUserName() && !checkPassword() && !checkConfirmPassword() && checkEmpty() && !userListViewModel.checkUsername(username: username) {
                 Button {
-                    let newUser = User(username: username, password: password)
-                    viewModel.addUser(user: newUser, bookings: [])
+//                    viewModel.addUser(user: newUser, bookings: [])
+                    userListViewModel.addUser(username: username, password: password)
                     
-                    print(viewModel.users)
+                    print(userListViewModel.users)
                     
                     dismiss()
                 } label: {
@@ -160,8 +162,8 @@ struct RegisterView: View {
     
 }
 
-struct RegisterView_Previews: PreviewProvider {
-    static var previews: some View {
-        RegisterView(viewModel: UsersViewModel())
-    }
-}
+//struct RegisterView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RegisterView()
+//    }
+//}

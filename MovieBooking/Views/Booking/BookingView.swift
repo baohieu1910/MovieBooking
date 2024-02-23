@@ -28,7 +28,10 @@ struct ScreenShape: Shape {
 struct BookingView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject var userManager = UserManager.shared
-    @ObservedObject var viewModel = UsersViewModel()
+//    @ObservedObject var viewModel = UserListViewModel()
+    
+//    @ObservedObject var viewModel = UsersViewModel()
+    @ObservedObject var bookingListViewModel = BookingListViewModel()
     
     let theaterName: String
     let movieID: Int
@@ -58,7 +61,7 @@ struct BookingView: View {
                     
                     LazyVGrid(columns: columns) {
                         ForEach(0..<63) { num in
-                            if viewModel.checkBookings(bookingCode: getCode(seatNum: num)) {
+                            if bookingListViewModel.checkBookings(bookingCode: getCode(seatNum: num)) {
                                 RoundedRectangle(cornerRadius: 5)
                                     .fill(.gray)
                                     .frame(width: UIScreen.screenWidth / 12, height: UIScreen.screenWidth / 12)
@@ -151,16 +154,17 @@ struct BookingView: View {
                     if countNumBooking() > 0 {
                         Button {
                             if let user = userManager.currentUser {
-                                var bookingList = [Booking]()
+//                                var bookingList = [Booking]()
                                 
                                 for index in bookingStatus.indices {
                                     if bookingStatus[index] {
-                                        let booking = Booking(movieID: movieID, movieName: movieName, theaterName: theaterName, date: date, time: time, seatNum: index, dateBooking: Date.now)
-                                        bookingList.append(booking)
+//                                        let booking = Booking(movieID: movieID, movieName: movieName, theaterName: theaterName, date: date, time: time, seatNum: index, dateBooking: Date.now)
+//                                        bookingList.append(booking)
+                                        bookingListViewModel.addBooking(user: user, movieName: movieName, movieID: Int64(movieID), theaterName: theaterName, dateBooking: Date.now, time: time, date: date, seatNum: Int64(index))
                                     }
                                 }
                                 
-                                viewModel.addBookingList(user: userManager.currentUser ?? User(username: "", password: ""), bookings: bookingList)
+//                                bookingListViewModel.addBookingList(user: userManager.currentUser ?? User(username: "", password: ""), bookings: bookingList)
                                 
                                 dismiss()
                             } else {
