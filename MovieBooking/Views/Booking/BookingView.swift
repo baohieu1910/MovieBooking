@@ -151,11 +151,11 @@ struct BookingView: View {
                     if countNumBooking() > 0 {
                         Button {
                             if let user = userManager.currentUser {
-                                var bookingList = [BookingDetail]()
+                                var bookingList = [Booking]()
                                 
                                 for index in bookingStatus.indices {
                                     if bookingStatus[index] {
-                                        let booking = BookingDetail(movieID: movieID, movieName: movieName, theaterName: theaterName, date: date, time: time, seatNum: index, dateBooking: Date.now)
+                                        let booking = Booking(movieID: movieID, movieName: movieName, theaterName: theaterName, date: date, time: time, seatNum: index, dateBooking: Date.now)
                                         bookingList.append(booking)
                                     }
                                 }

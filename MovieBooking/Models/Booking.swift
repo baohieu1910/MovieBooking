@@ -1,5 +1,5 @@
 //
-//  BookingDetail.swift
+//  Booking.swift
 //  MovieBooking
 //
 //  Created by Hieu Le on 2/18/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct BookingDetail: Codable, Identifiable {
+struct Booking: Codable, Identifiable {
     var id = UUID()
     var movieID: Int
     var movieName: String

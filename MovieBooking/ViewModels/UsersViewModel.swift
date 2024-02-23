@@ -10,7 +10,7 @@ import SwiftUI
 
 struct UserDetail: Codable {
     var user: User
-    var bookings: [BookingDetail]
+    var bookings: [Booking]
     
 }
 
@@ -23,7 +23,7 @@ class UsersViewModel: ObservableObject {
 }
 
 extension UsersViewModel {
-    func addBookingList(user: User, bookings: [BookingDetail]) {
+    func addBookingList(user: User, bookings: [Booking]) {
         for index in users.indices {
             if users[index].user.username == user.username {
                 var userDetail = users[index]
@@ -38,7 +38,7 @@ extension UsersViewModel {
         load()
     }
     
-    func getBookingHistory(user: User) -> [BookingDetail] {
+    func getBookingHistory(user: User) -> [Booking] {
         for userDetail in users {
             if userDetail.user.username == user.username {
                 return userDetail.bookings
@@ -59,7 +59,7 @@ extension UsersViewModel {
         return false
     }
     
-    func addUser(user: User, bookings: [BookingDetail]) {
+    func addUser(user: User, bookings: [Booking]) {
         let newUser = UserDetail(user: user, bookings: bookings)
         users.append(newUser)
             

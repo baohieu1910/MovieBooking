@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BookingHistory: View {
-    var bookingHistory: [BookingDetail]
+    var bookingHistory: [Booking]
     
     var body: some View {
         List {
