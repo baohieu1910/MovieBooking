@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct RegisterView: View {
-//    @ObservedObject var viewModel = UsersViewModel()
     @ObservedObject var userListViewModel: UserListViewModel
     
     @Environment(\.dismiss) var dismiss
@@ -114,10 +113,7 @@ struct RegisterView: View {
             
             if !checkUserName() && !checkPassword() && !checkConfirmPassword() && checkEmpty() && !userListViewModel.checkUsername(username: username) {
                 Button {
-//                    viewModel.addUser(user: newUser, bookings: [])
                     userListViewModel.addUser(username: username, password: password)
-                    
-                    print(userListViewModel.users)
                     
                     dismiss()
                 } label: {
@@ -162,8 +158,8 @@ struct RegisterView: View {
     
 }
 
-//struct RegisterView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        RegisterView()
-//    }
-//}
+struct RegisterView_Previews: PreviewProvider {
+    static var previews: some View {
+        RegisterView(userListViewModel: UserListViewModel())
+    }
+}

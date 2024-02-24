@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct ScreenShape: Shape {
-    var screenCurveture: CGFloat = 30
+    var screenCurvature: CGFloat = 30
     var isClip = false
     
     func path(in rect: CGRect) -> Path {
         
         return Path{ path in
-            path.move(to: CGPoint(x: rect.origin.x + screenCurveture, y: rect.origin.y +  screenCurveture))
-            path.addQuadCurve(to: CGPoint(x: rect.width - screenCurveture, y: rect.origin.y + screenCurveture), control: CGPoint(x: rect.midX, y: rect.origin.y) )
+            path.move(to: CGPoint(x: rect.origin.x + screenCurvature, y: rect.origin.y +  screenCurvature))
+            path.addQuadCurve(to: CGPoint(x: rect.width - screenCurvature, y: rect.origin.y + screenCurvature), control: CGPoint(x: rect.midX, y: rect.origin.y) )
             if isClip{
                 path.addLine(to: CGPoint(x: rect.width, y: rect.height))
                 path.addLine(to: CGPoint(x: rect.origin.x, y: rect.height))
@@ -28,10 +28,8 @@ struct ScreenShape: Shape {
 struct BookingView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject var userManager = UserManager.shared
-//    @ObservedObject var viewModel = UserListViewModel()
-    
-//    @ObservedObject var viewModel = UsersViewModel()
     @ObservedObject var bookingListViewModel = BookingListViewModel()
+    @ObservedObject var userListViewModel = UserListViewModel()
     
     let theaterName: String
     let movieID: Int
@@ -154,17 +152,12 @@ struct BookingView: View {
                     if countNumBooking() > 0 {
                         Button {
                             if let user = userManager.currentUser {
-//                                var bookingList = [Booking]()
-                                
                                 for index in bookingStatus.indices {
                                     if bookingStatus[index] {
-//                                        let booking = Booking(movieID: movieID, movieName: movieName, theaterName: theaterName, date: date, time: time, seatNum: index, dateBooking: Date.now)
-//                                        bookingList.append(booking)
                                         bookingListViewModel.addBooking(user: user, movieName: movieName, movieID: Int64(movieID), theaterName: theaterName, dateBooking: Date.now, time: time, date: date, seatNum: Int64(index))
                                     }
                                 }
-                                
-//                                bookingListViewModel.addBookingList(user: userManager.currentUser ?? User(username: "", password: ""), bookings: bookingList)
+                                userListViewModel.updateBookings(user: user)
                                 
                                 dismiss()
                             } else {

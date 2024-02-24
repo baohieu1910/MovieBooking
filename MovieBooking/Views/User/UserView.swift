@@ -8,12 +8,8 @@
 import SwiftUI
 
 struct UserView: View {
-//    @ObservedObject var viewModel = UsersViewModel()
     @ObservedObject var userListViewModel = UserListViewModel()
     @ObservedObject var userManager = UserManager.shared
-    
-//    @State var user: User?
-    @State var user = User(username: "123", password: "123")
     
     @State var username: String = ""
     @State var password: String = ""
@@ -21,7 +17,6 @@ struct UserView: View {
     
     var body: some View {
         NavigationView {
-//            if let user = user {
             if let user = userManager.currentUser {
                 VStack {
                     VStack {
@@ -34,7 +29,7 @@ struct UserView: View {
                                 .padding()
                             
                             VStack {
-                                Text("\(user.username ?? "")")
+                                Text("\(user.username?.uppercased() ?? "")")
                                     .font(.title)
                                 
                             }
@@ -43,7 +38,7 @@ struct UserView: View {
                         }
 
                         NavigationLink {
-                            BookingHistory(bookingHistory: user.bookingsHistory)
+                            BookingHistory(bookingHistory: userListViewModel.getUser(user: user)?.bookingsHistory ?? user.bookingsHistory)
                         } label: {
                             HStack {
                                 Image(systemName: "clock.arrow.circlepath")
@@ -61,8 +56,7 @@ struct UserView: View {
                         Text("Total Spending")
                             .font(.system(size: 18, weight: .bold))
                         
-//                        Text("$\(viewModel.getBookingHistory(user: user).count * 20)")
-                        Text("$ \(user.bookingsHistory.count )")
+                        Text("$ \((userListViewModel.getUser(user: user)?.bookingsHistory ?? user.bookingsHistory).count * 20)")
                             .font(.system(size: 25, weight: .bold))
                             .foregroundColor(.orange)
                             
@@ -87,7 +81,6 @@ struct UserView: View {
                 }
                 .padding()
                 .onAppear {
-//                    viewModel.load()
                     userListViewModel.updateUsers()
                 }
                 .navigationTitle("User")

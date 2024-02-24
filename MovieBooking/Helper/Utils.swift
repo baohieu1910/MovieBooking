@@ -17,7 +17,7 @@ enum Utils {
     }
 
     static func getReleaseDate(releaseDate: String?) -> String {
-        var dateFormatter = DateFormatter()
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
         guard let releaseDate else {
@@ -56,14 +56,6 @@ enum Utils {
             return Constants.noImageName
         }
         return Constants.baseImageUrl + Constants.backGroundImageSize + filePath
-    }
-    
-    static func getBudget(budget: Int?) -> Text {
-        return Text(budget ?? 0, format: .currency(code: "USD").precision(.fractionLength(2)))
-    }
-    
-    static func getRevenue(revenue: Int?) -> Text {
-        return Text(revenue ?? 0, format: .currency(code: "USD").precision(.fractionLength(2)))
     }
 }
 

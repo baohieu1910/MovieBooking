@@ -10,7 +10,6 @@ import SwiftUI
 struct LoginView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject var userManager = UserManager.shared
-    @ObservedObject var viewModel = UsersViewModel()
     @ObservedObject var userListViewModel = UserListViewModel()
     
     @State var username: String = ""

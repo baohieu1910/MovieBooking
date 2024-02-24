@@ -34,7 +34,7 @@ extension CoreDataManager {
                 try viewContext.save()
             }
             catch {
-                print(error.localizedDescription)
+                print("ERROR: \(error.localizedDescription)")
             }
         }
     }

@@ -24,10 +24,9 @@ extension Users {
     public var bookingsHistory: [Bookings] {
         let bookingsSet = bookings as? Set<Bookings> ?? []
         
-        return Array(bookingsSet)
-//        return bookingsSet.sorted { lhs, rhs in
-//            lhs.dateBooking > rhs.dateBooking
-//        }
+        return Array(bookingsSet).sorted { lhs, rhs in
+            lhs.dateBooking ?? Date.now > rhs.dateBooking ?? Date.now
+        }
     }
 }
 

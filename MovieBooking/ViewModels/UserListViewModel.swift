@@ -36,6 +36,26 @@ class UserListViewModel: ObservableObject {
         getAllUsers()
     }
     
+    func updateBookings(user: Users) {
+        for _user in users {
+            if _user.username?.uppercased() == user.username?.uppercased() {
+                let bookingsSet = user.bookings as? Set<Bookings> ?? []
+                let newBookings = _user.bookings?.addingObjects(from: bookingsSet)
+                _user.bookings = NSSet(set: newBookings ?? [])
+            }
+        }
+        updateUsers()
+    }
+    
+    func getUser(user: Users) -> Users? {
+        for _user in users {
+            if _user.username == user.username {
+                return _user
+            }
+        }
+        return nil
+    }
+    
     func checkLogin(username: String, password: String) -> Bool {
         for user in users {
             if user.username?.uppercased() == username.uppercased() && user.password == password {
@@ -55,8 +75,4 @@ class UserListViewModel: ObservableObject {
         
         return false
     }
-    
-//    func getBookingHistory() -> [Bookings] {
-//        let bookingList =
-//    }
 }

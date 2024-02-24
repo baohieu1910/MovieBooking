@@ -27,7 +27,7 @@ class APIService {
         let session = URLSession.shared
         let dataTask = session.dataTask(with: request as URLRequest) { (data, response, error) -> Void in
             guard let data = data, error == nil else {
-                print(error?.localizedDescription)
+                print("ERROR: \(String(describing: error?.localizedDescription))")
                 return
             }
             
@@ -43,12 +43,12 @@ class APIService {
                             completion(result)
                         }
                     } catch {
-                        print(error)
+                        print("ERROR: \(error)")
                     }
                     
                 }
             } catch let error as NSError {
-                print("Failed to load: \(error.localizedDescription)")
+                print("ERROR: Failed to load: \(error.localizedDescription)")
             }
         }
         dataTask.resume()
@@ -65,7 +65,7 @@ class APIService {
         let session = URLSession.shared
         let dataTask = session.dataTask(with: request as URLRequest) { (data, response, error) -> Void in
             guard let data = data, error == nil else {
-                print(error?.localizedDescription)
+                print("ERROR: \(String(describing: error?.localizedDescription))")
                 return
             }
             
@@ -81,12 +81,12 @@ class APIService {
                             completion(result)
                         }
                     } catch {
-                        print(error)
+                        print("ERROR: \(error)")
                     }
                     
                 }
             } catch let error as NSError {
-                print("Failed to load: \(error.localizedDescription)")
+                print("ERROR: Failed to load: \(error.localizedDescription)")
             }
         }
         dataTask.resume()
@@ -105,7 +105,7 @@ class APIService {
         let session = URLSession.shared
         let dataTask = session.dataTask(with: request as URLRequest) { (data, response, error) -> Void in
             guard let data = data, error == nil else {
-                print(error?.localizedDescription)
+                print("ERROR: \(String(describing: error?.localizedDescription))")
                 return
             }
             
@@ -121,12 +121,12 @@ class APIService {
                             completion(result)
                         }
                     } catch {
-                        print(error)
+                        print("ERROR: \(error)")
                     }
                     
                 }
             } catch let error as NSError {
-                print("Failed to load: \(error.localizedDescription)")
+                print("ERROR: Failed to load: \(error.localizedDescription)")
             }
         }
         dataTask.resume()
@@ -144,7 +144,7 @@ class APIService {
         let session = URLSession.shared
         let dataTask = session.dataTask(with: request as URLRequest) { (data, response, error) -> Void in
             guard let data = data, error == nil else {
-                print(error?.localizedDescription)
+                print("ERROR: \(String(describing: error?.localizedDescription))")
                 return
             }
             
@@ -160,12 +160,12 @@ class APIService {
                             completion(result)
                         }
                     } catch {
-                        print(error)
+                        print("ERROR: \(error)")
                     }
                     
                 }
             } catch let error as NSError {
-                print("Failed to load: \(error.localizedDescription)")
+                print("ERROR: Failed to load: \(error.localizedDescription)")
             }
         }
         dataTask.resume()
@@ -182,7 +182,7 @@ class APIService {
         let session = URLSession.shared
         let dataTask = session.dataTask(with: request as URLRequest) { (data, response, error) -> Void in
             guard let data = data, error == nil else {
-                print(error?.localizedDescription)
+                print("ERROR: \(String(describing: error?.localizedDescription))")
                 return
             }
             
@@ -198,12 +198,12 @@ class APIService {
                             completion(result)
                         }
                     } catch {
-                        print(error)
+                        print("ERROR: \(error)")
                     }
                     
                 }
             } catch let error as NSError {
-                print("Failed to load: \(error.localizedDescription)")
+                print("ERROR: Failed to load: \(error.localizedDescription)")
             }
         }
         dataTask.resume()

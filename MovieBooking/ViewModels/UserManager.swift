@@ -26,22 +26,6 @@ extension UserManager {
     func logout() {
         currentUser = nil
     }
-    
-//    func save() {
-//        guard let data = try? JSONEncoder().encode(self) else {
-//            return
-//        }
-//        UserDefaults.standard.set(data, forKey: "UserManager")
-//    }
-//
-//    func load() {
-//        guard let data = UserDefaults.standard.object(forKey: "UserManager") as? Data else {
-//            return
-//        }
-//        let userManager = try? JSONDecoder().decode(UserManager.self, from: data)
-//        self.currentUser = userManager?.currentUser
-////        currentUser = try! JSONDecoder().decode(User.self, from: data)
-//    }
 }
 
 private extension UserManager {
