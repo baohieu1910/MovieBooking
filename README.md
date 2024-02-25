@@ -23,7 +23,7 @@ IOS 15.0
 
 4. Run the app:
 ```bash
-Run in your XCode
+Run in your Xcode
 ```
 
 ## Technologies Used
