@@ -17,6 +17,7 @@
 		A49437022B89052700BBFB56 /* Bookings+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49436FE2B89052700BBFB56 /* Bookings+CoreDataProperties.swift */; };
 		A49437032B89052700BBFB56 /* Users+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49436FF2B89052700BBFB56 /* Users+CoreDataClass.swift */; };
 		A49437042B89052700BBFB56 /* Users+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49437002B89052700BBFB56 /* Users+CoreDataProperties.swift */; };
+		A4BE4BE32B8E41400068F55C /* ColorSchemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BE4BE22B8E41400068F55C /* ColorSchemeManager.swift */; };
 		A4BF57912B86E8D3007AFD04 /* BookingHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BF57902B86E8D3007AFD04 /* BookingHistory.swift */; };
 		A4BF57952B88458F007AFD04 /* MovieBooking.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A4BF57932B88458E007AFD04 /* MovieBooking.xcdatamodeld */; };
 		A4BF57A72B884E2B007AFD04 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BF57A62B884E2B007AFD04 /* CoreDataManager.swift */; };
@@ -61,10 +62,12 @@
 		A4535DE32B761BE5003C657C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A46BD2532B7CF99D00B2D172 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		A46BD2582B7CFA8C00B2D172 /* MovieDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetail.swift; sourceTree = "<group>"; };
-		A49436FD2B89052700BBFB56 /* Bookings+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Bookings+CoreDataClass.swift"; path = "MovieBooking/Bookings+CoreDataClass.swift"; sourceTree = "<group>"; };
-		A49436FE2B89052700BBFB56 /* Bookings+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Bookings+CoreDataProperties.swift"; path = "MovieBooking/Bookings+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		A49436FF2B89052700BBFB56 /* Users+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Users+CoreDataClass.swift"; path = "MovieBooking/Users+CoreDataClass.swift"; sourceTree = "<group>"; };
-		A49437002B89052700BBFB56 /* Users+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Users+CoreDataProperties.swift"; path = "MovieBooking/Users+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A49436FD2B89052700BBFB56 /* Bookings+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bookings+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A49436FE2B89052700BBFB56 /* Bookings+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bookings+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A49436FF2B89052700BBFB56 /* Users+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Users+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A49437002B89052700BBFB56 /* Users+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Users+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A49437092B89D73100BBFB56 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		A4BE4BE22B8E41400068F55C /* ColorSchemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSchemeManager.swift; sourceTree = "<group>"; };
 		A4BF57902B86E8D3007AFD04 /* BookingHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingHistory.swift; sourceTree = "<group>"; };
 		A4BF57942B88458F007AFD04 /* MovieBooking.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MovieBooking.xcdatamodel; sourceTree = "<group>"; };
 		A4BF57A62B884E2B007AFD04 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -115,10 +118,6 @@
 		A4535DD02B761BE3003C657C = {
 			isa = PBXGroup;
 			children = (
-				A49436FD2B89052700BBFB56 /* Bookings+CoreDataClass.swift */,
-				A49436FE2B89052700BBFB56 /* Bookings+CoreDataProperties.swift */,
-				A49436FF2B89052700BBFB56 /* Users+CoreDataClass.swift */,
-				A49437002B89052700BBFB56 /* Users+CoreDataProperties.swift */,
 				A4535DDB2B761BE3003C657C /* MovieBooking */,
 				A4535DDA2B761BE3003C657C /* Products */,
 			);
@@ -135,16 +134,16 @@
 		A4535DDB2B761BE3003C657C /* MovieBooking */ = {
 			isa = PBXGroup;
 			children = (
-				A4CBF4B22B7CFB9E001C64D2 /* API */,
+				A49437092B89D73100BBFB56 /* .swiftlint.yml */,
+				A4535DDC2B761BE3003C657C /* MovieBookingApp.swift */,
 				A4535DE02B761BE5003C657C /* Assets.xcassets */,
-				A4CBF4C32B7D00E3001C64D2 /* Extensions */,
+				A4BF57932B88458E007AFD04 /* MovieBooking.xcdatamodeld */,
+				A4CBF4B22B7CFB9E001C64D2 /* API */,
 				A4CBF4B32B7CFBAD001C64D2 /* Helper */,
 				A46BD2552B7CFA0600B2D172 /* Models */,
-				A4535DDC2B761BE3003C657C /* MovieBookingApp.swift */,
 				A4535DE22B761BE5003C657C /* Preview Content */,
 				A46BD2562B7CFA0F00B2D172 /* ViewModels */,
 				A46BD2572B7CFA1700B2D172 /* Views */,
-				A4BF57932B88458E007AFD04 /* MovieBooking.xcdatamodeld */,
 			);
 			path = MovieBooking;
 			sourceTree = "<group>";
@@ -160,8 +159,8 @@
 		A46BD2552B7CFA0600B2D172 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A49437052B89C20200BBFB56 /* CoreData */,
 				A4CBF4D82B7E6F5B001C64D2 /* Cast.swift */,
-				A4BF57A62B884E2B007AFD04 /* CoreDataManager.swift */,
 				A4CBF4D22B7E345D001C64D2 /* Images.swift */,
 				A46BD2532B7CF99D00B2D172 /* Movie.swift */,
 				A46BD2582B7CFA8C00B2D172 /* MovieDetail.swift */,
@@ -195,6 +194,27 @@
 				A4C4B1FB2B849EA500DC4D00 /* User */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		A49437052B89C20200BBFB56 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				A49436FD2B89052700BBFB56 /* Bookings+CoreDataClass.swift */,
+				A49436FE2B89052700BBFB56 /* Bookings+CoreDataProperties.swift */,
+				A49436FF2B89052700BBFB56 /* Users+CoreDataClass.swift */,
+				A49437002B89052700BBFB56 /* Users+CoreDataProperties.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		A4BE4BE02B8E40F90068F55C /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				A4CBF4C12B7CFFA0001C64D2 /* Constants.swift */,
+				A4CBF4BD2B7CFD42001C64D2 /* ExampleData.swift */,
+				A4CBF4BB2B7CFD33001C64D2 /* Utils.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		A4BF57922B86E8D7007AFD04 /* Booking */ = {
@@ -251,9 +271,10 @@
 		A4CBF4B32B7CFBAD001C64D2 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				A4CBF4C12B7CFFA0001C64D2 /* Constants.swift */,
-				A4CBF4BD2B7CFD42001C64D2 /* ExampleData.swift */,
-				A4CBF4BB2B7CFD33001C64D2 /* Utils.swift */,
+				A4BF57A62B884E2B007AFD04 /* CoreDataManager.swift */,
+				A4BE4BE22B8E41400068F55C /* ColorSchemeManager.swift */,
+				A4CBF4C32B7D00E3001C64D2 /* Extensions */,
+				A4BE4BE02B8E40F90068F55C /* Utilities */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -277,6 +298,7 @@
 				A4535DD52B761BE3003C657C /* Sources */,
 				A4535DD62B761BE3003C657C /* Frameworks */,
 				A4535DD72B761BE3003C657C /* Resources */,
+				A49437062B89D00900BBFB56 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -332,6 +354,26 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A49437062B89D00900BBFB56 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A4535DD52B761BE3003C657C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -357,6 +399,7 @@
 				A4BF57AB2B888E48007AFD04 /* BookingListViewModel.swift in Sources */,
 				A4C4B1F82B84996B00DC4D00 /* UserView.swift in Sources */,
 				A4CBF4B62B7CFBC1001C64D2 /* APIService.swift in Sources */,
+				A4BE4BE32B8E41400068F55C /* ColorSchemeManager.swift in Sources */,
 				A4535DDD2B761BE3003C657C /* MovieBookingApp.swift in Sources */,
 				A4CBF4B82B7CFC60001C64D2 /* MoviesListViewModel.swift in Sources */,
 				A4CBF4C02B7CFE54001C64D2 /* PosterView.swift in Sources */,

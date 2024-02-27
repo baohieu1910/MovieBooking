@@ -105,7 +105,7 @@ struct TheaterView: View {
                                 } label: {
                                     Text("\(time)")
                                         .frame(width: UIScreen.screenWidth / 5, height: 40)
-                                        .foregroundColor(.black)
+                                        .foregroundColor(ColorSchemeManager.shared.isLight ? .black : .white)
                                         .overlay(
                                             RoundedRectangle(cornerRadius: 5)
                                                 .stroke(Color.gray, lineWidth: 1)
@@ -125,6 +125,7 @@ struct TheaterView: View {
         .onAppear {
             viewModel.getNowPlayingMovies()
         }
+        
         
     }
     

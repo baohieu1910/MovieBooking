@@ -11,6 +11,7 @@ struct LoginView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject var userManager = UserManager.shared
     @ObservedObject var userListViewModel = UserListViewModel()
+    @ObservedObject var colorSchemeManager = ColorSchemeManager.shared
     
     @State var username: String = ""
     @State var password: String = ""
@@ -93,6 +94,7 @@ struct LoginView: View {
             }
             .padding(.horizontal)
         }
+        .environment(\.colorScheme, ColorSchemeManager.shared.isLight ? .light : .dark)
     }
 }
 

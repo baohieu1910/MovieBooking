@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct PosterView: View {
-    let movie: Movie
+    @ObservedObject var colorSchemeManager = ColorSchemeManager.shared
     
+    let movie: Movie
     let imageWidth = UIScreen.screenWidth / 2 - 30
     var body: some View {
         let url = URL(string: Utils.getMoviePoster(posterPath: movie.posterPath))
@@ -42,6 +43,7 @@ struct PosterView: View {
                 
                 Text("\(movie.title ?? "N/A")")
                     .lineLimit(1)
+                    .foregroundColor(ColorSchemeManager.shared.isLight ? .black : .white)
             }
             
         } placeholder: {

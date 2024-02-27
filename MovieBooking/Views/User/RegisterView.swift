@@ -136,6 +136,15 @@ struct RegisterView: View {
             }
         }
         .padding(.horizontal)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    ColorSchemeManager.shared.changeColorScheme()
+                } label: {
+                    Image(systemName: ColorSchemeManager.shared.isLight ? "sun.max" : "moon")
+                }
+            }
+        }
     }
     
     func checkEmpty() -> Bool {

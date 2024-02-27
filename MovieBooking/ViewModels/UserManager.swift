@@ -10,8 +10,7 @@ import Foundation
 
 class UserManager: ObservableObject {
     static var shared = UserManager()
-    
-    @Published var currentUser : Users? = nil
+    @Published var currentUser: Users? = nil
     
 }
     

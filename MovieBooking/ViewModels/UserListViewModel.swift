@@ -37,20 +37,20 @@ class UserListViewModel: ObservableObject {
     }
     
     func updateBookings(user: Users) {
-        for _user in users {
-            if _user.username?.uppercased() == user.username?.uppercased() {
+        for user_ in users {
+            if user_.username?.uppercased() == user.username?.uppercased() {
                 let bookingsSet = user.bookings as? Set<Bookings> ?? []
-                let newBookings = _user.bookings?.addingObjects(from: bookingsSet)
-                _user.bookings = NSSet(set: newBookings ?? [])
+                let newBookings = user_.bookings?.addingObjects(from: bookingsSet)
+                user_.bookings = NSSet(set: newBookings ?? [])
             }
         }
         updateUsers()
     }
     
     func getUser(user: Users) -> Users? {
-        for _user in users {
-            if _user.username == user.username {
-                return _user
+        for user_ in users {
+            if user_.username == user.username {
+                return user_
             }
         }
         return nil

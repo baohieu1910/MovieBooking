@@ -45,7 +45,7 @@ struct TheaterListView: View {
                                 }
                                 
                             }
-                            .foregroundColor(.black)
+                            .foregroundColor(ColorSchemeManager.shared.isLight ? .black : .white)
                             .padding()
                         }
                         
@@ -55,6 +55,15 @@ struct TheaterListView: View {
             }
             .navigationTitle("Theater")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        ColorSchemeManager.shared.changeColorScheme()
+                    } label: {
+                        Image(systemName: ColorSchemeManager.shared.isLight ? "sun.max" : "moon")
+                    }
+                }
+            }
         }
     }
 }

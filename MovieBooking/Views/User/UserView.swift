@@ -10,6 +10,7 @@ import SwiftUI
 struct UserView: View {
     @ObservedObject var userListViewModel = UserListViewModel()
     @ObservedObject var userManager = UserManager.shared
+    @ObservedObject var colorSchemeManager = ColorSchemeManager.shared
     
     @State var username: String = ""
     @State var password: String = ""
@@ -46,7 +47,7 @@ struct UserView: View {
                                 Text("History")
                             }
                             .font(.system(size: 18))
-                            .foregroundColor(.black)
+                            .foregroundColor(colorSchemeManager.isLight ? .black : .white)
                         }
                         
                         Divider()
@@ -85,6 +86,15 @@ struct UserView: View {
                 }
                 .navigationTitle("User")
                 .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            ColorSchemeManager.shared.changeColorScheme()
+                        } label: {
+                            Image(systemName: ColorSchemeManager.shared.isLight ? "sun.max" : "moon")
+                        }
+                    }
+                }
             } else {
                 VStack {
                     Text("Login to your account")
@@ -123,7 +133,6 @@ struct UserView: View {
                         .padding(.bottom)
                     }
                     
-                    
                     Button {
                         if userListViewModel.checkLogin(username: username, password: password) {
                             userManager.login(username: username, password: password)
@@ -159,8 +168,18 @@ struct UserView: View {
                     }
                 }
                 .padding(.horizontal)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            ColorSchemeManager.shared.changeColorScheme()
+                        } label: {
+                            Image(systemName: ColorSchemeManager.shared.isLight ? "sun.max" : "moon")
+                        }
+                    }
+                }
             }
         }
+        .environment(\.colorScheme, ColorSchemeManager.shared.isLight ? .light : .dark)
     }
 }
 

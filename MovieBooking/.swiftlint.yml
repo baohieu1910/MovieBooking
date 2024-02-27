@@ -1,0 +1,7 @@
+#  Rule
+
+line_length: 300
+
+identifier_name:
+     allowed_symbols: "_"
+

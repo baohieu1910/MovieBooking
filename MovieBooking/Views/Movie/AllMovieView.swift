@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AllMovieView: View {
     @ObservedObject var viewModel: MoviesListViewModel
-    
+
     @Binding var status: HomeStatus
     
     var body: some View {

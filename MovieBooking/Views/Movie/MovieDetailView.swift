@@ -12,6 +12,7 @@ struct MovieDetailView: View {
     @ObservedObject var imagesVM = ImageListsViewModel()
     @ObservedObject var castVM = CastListViewModel()
     @ObservedObject var theaterVM = TheaterListViewModel()
+    @ObservedObject var colorSchemeManager = ColorSchemeManager.shared
     
     var movie: Movie
     
@@ -171,7 +172,7 @@ struct MovieDetailView: View {
                                                             RoundedRectangle(cornerRadius: 5)
                                                                 .stroke(Color.gray, lineWidth: 1)
                                                         )
-                                                        .foregroundColor(.black)
+                                                        .foregroundColor(colorSchemeManager.isLight ? .black : .white)
                                                 }
                                             }
                                         }

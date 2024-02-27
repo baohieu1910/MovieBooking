@@ -9,10 +9,12 @@ import SwiftUI
 
 @main
 struct MovieBookingApp: App {
+    @ObservedObject var colorSchemeManager = ColorSchemeManager.shared
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .preferredColorScheme(.light)
+                .environment(\.colorScheme, colorSchemeManager.isLight ? .light : .dark)
                 .environment(\.managedObjectContext, CoreDataManager.shared.viewContext)
         }
     }
